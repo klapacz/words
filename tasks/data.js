@@ -60,8 +60,15 @@ function createIndex(cb) {
         return;
     }
 
+    const menuDistDir = resolve(process.env.PWD, 'generated');
+    const menuFilename = 'menu.json';
+
+    if (!fs.existsSync(menuDistDir)) {
+        fs.mkdirSync(menuDistDir);
+    }
+
     fs.writeFileSync(
-        resolve(process.env.PWD, 'data/menu.json'),
+        join(menuDistDir, menuFilename),
         JSON.stringify(formattedData)
     );
 }
