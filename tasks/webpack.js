@@ -21,6 +21,7 @@ const config = {
         alias: {
             '@': './client',
         },
+        extensions: ['.ts', '.tsx', '.js'],
     },
 
     output: {
