@@ -1,12 +1,15 @@
 import * as React from 'react';
-import { default as list } from '@/generated/menu.json';
 
-import Menu from './components/Menu';
+import Menu, { MenuData } from './components/Menu';
 
-const Root: React.FC = () => (
+interface RootProps {
+    menuData: MenuData;
+}
+
+const Root: React.FC<RootProps> = ({ menuData }: RootProps) => (
     <div>
         <h1>Hello</h1>
-        <Menu items={list} />
+        <Menu data={menuData} />
     </div>
 );
 

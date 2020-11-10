@@ -7,11 +7,13 @@ interface CategoryItem {
     wordSets: WordSetItem[];
 }
 
+type MenuData = CategoryItem[];
+
 interface MenuProps {
-    items: CategoryItem[];
+    data: MenuData;
 }
 
-const Menu: React.FC<MenuProps> = ({ items }: MenuProps) => {
+const Menu: React.FC<MenuProps> = ({ data: items }: MenuProps) => {
     return (
         <ul>
             {items.map(({ name: categoryName, wordSets }) => (
@@ -29,3 +31,4 @@ const Menu: React.FC<MenuProps> = ({ items }: MenuProps) => {
 };
 
 export default Menu;
+export { MenuData };
