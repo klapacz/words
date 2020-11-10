@@ -7,7 +7,7 @@ import { resolve, join } from 'path';
 import { validate } from 'jsonschema';
 import menuSchema from '../data/menu.schema.json';
 
-function compile() {
+export function generateJsonAPI() {
     return gulp
         .src(['data/**/*.yaml', '!data/*'])
         .pipe(gulpYaml())
@@ -15,7 +15,7 @@ function compile() {
         .pipe(gulp.dest('dist/api'));
 }
 
-function createIndex(cb) {
+export function generateMenu(cb) {
     const indexPath = resolve(process.env.PWD, 'data/index.yaml');
     const data = yaml.safeLoad(fs.readFileSync(indexPath));
 
@@ -73,4 +73,4 @@ function createIndex(cb) {
     );
 }
 
-export default gulp.series(compile, createIndex);
+export default gulp.series(generateJsonAPI, generateMenu);
