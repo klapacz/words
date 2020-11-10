@@ -1,26 +1,11 @@
 import * as React from 'react';
 
-interface WordSetItem {
-    name: string;
-    url: string;
-}
+import MenuItem, { WordSetItem } from './MenuItem';
 
 interface CategoryItem {
     name: string;
     wordSets: WordSetItem[];
 }
-
-interface MenuItemProps {
-    item: WordSetItem;
-}
-
-const MenuItem: React.FC<MenuItemProps> = ({ item }: MenuItemProps) => {
-    return (
-        <li key={item.name}>
-            <a href={item.url}>{item.name}</a>
-        </li>
-    );
-};
 
 interface MenuProps {
     items: CategoryItem[];
