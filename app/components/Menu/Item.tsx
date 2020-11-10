@@ -11,7 +11,7 @@ interface MenuItemProps {
 
 const MenuItem: React.FC<MenuItemProps> = ({ item }: MenuItemProps) => {
     return (
-        <li key={item.name}>
+        <li>
             <a href={item.url}>{item.name}</a>
         </li>
     );
