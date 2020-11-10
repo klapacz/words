@@ -1,9 +1,10 @@
 import * as React from 'react';
 
-import Menu, { MenuData } from './components/Menu';
+import Menu from './components/Menu';
+import MenuEntity from '@/app/model/menu';
 
 interface RootProps {
-    menuData: MenuData;
+    menuData: MenuEntity;
 }
 
 const Root: React.FC<RootProps> = ({ menuData }: RootProps) => (

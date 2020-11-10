@@ -1,34 +1,19 @@
 import * as React from 'react';
+import MenuEntity from '@/app/model/menu';
+import MenuCategory from './Category';
 
-import MenuItem, { WordSetItem } from './Item';
-
-interface CategoryItem {
-    name: string;
-    wordSets: WordSetItem[];
+interface Props {
+    data: MenuEntity;
 }
 
-type MenuData = CategoryItem[];
-
-interface MenuProps {
-    data: MenuData;
-}
-
-const Menu: React.FC<MenuProps> = ({ data: items }: MenuProps) => {
-    return (
+const Menu: React.FC<Props> = ({ data: items }: Props) => (
+    <nav>
         <ul>
-            {items.map(({ name: categoryName, wordSets }) => (
-                <li key={categoryName}>
-                    {categoryName}
-                    <ol>
-                        {wordSets.map((item) => (
-                            <MenuItem item={item} key={item.name} />
-                        ))}
-                    </ol>
-                </li>
+            {items.map((category) => (
+                <MenuCategory category={category} key={category.name} />
             ))}
         </ul>
-    );
-};
+    </nav>
+);
 
 export default Menu;
-export { MenuData };
