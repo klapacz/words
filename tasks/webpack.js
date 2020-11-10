@@ -19,7 +19,7 @@ const config = {
 
     resolve: {
         alias: {
-            '@': './client',
+            '@': '..',
         },
         extensions: ['.ts', '.tsx', '.js'],
     },

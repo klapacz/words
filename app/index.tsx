@@ -1,6 +1,6 @@
 import * as ReactDOM from 'react-dom';
 import * as React from 'react';
-import { default as list } from './list.json';
+import { default as list } from '@/data/menu.json';
 
 import Menu from './components/Menu';
 

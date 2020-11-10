@@ -50,7 +50,7 @@ function createIndex() {
     }
 
     fs.writeFileSync(
-        resolve(process.env.PWD, 'app/list.json'),
+        resolve(process.env.PWD, 'data/menu.json'),
         JSON.stringify(formattedData)
     );
 }
