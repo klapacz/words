@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import MenuItem, { WordSetItem } from './MenuItem';
+import MenuItem, { WordSetItem } from './Item';
 
 interface CategoryItem {
     name: string;
