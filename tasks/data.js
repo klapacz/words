@@ -24,7 +24,7 @@ export function generateMenu(cb) {
     for (const [dir, categoryName] of Object.entries(data)) {
         const categoryData = {
             name: categoryName,
-            wordSets: [],
+            items: [],
         };
 
         const categoryPath = resolve(process.env.PWD, 'data', dir);
@@ -36,16 +36,18 @@ export function generateMenu(cb) {
                 fs.readFileSync(wordSetFilePath)
             );
 
+            const apiEndpointURL = join(
+                '/api',
+                dir,
+                wordSetFilename.replace(/\.yaml$/, '.json')
+            );
+
             const wordSetData = {
                 name: wordSetFileContent.name,
-                url: join(
-                    '/api',
-                    dir,
-                    wordSetFilename.replace(/\.yaml$/, '.json')
-                ),
+                url: apiEndpointURL,
             };
 
-            categoryData.wordSets.push(wordSetData);
+            categoryData.items.push(wordSetData);
         }
 
         formattedData.push(categoryData);

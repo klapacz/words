@@ -1,17 +1,16 @@
 import * as React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Menu from './components/Menu';
-import MenuEntity from '@/app/model/menu';
+import Home from './pages/Home';
 
-interface RootProps {
-    menuData: MenuEntity;
-}
-
-const Root: React.FC<RootProps> = ({ menuData }: RootProps) => (
-    <div>
-        <h1>Hello</h1>
-        <Menu data={menuData} />
-    </div>
+const Root: React.FC = () => (
+    <Router>
+        <Switch>
+            <Route path="/">
+                <Home />
+            </Route>
+        </Switch>
+    </Router>
 );
 
 export default Root;

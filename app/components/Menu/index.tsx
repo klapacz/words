@@ -1,15 +1,12 @@
 import * as React from 'react';
-import MenuEntity from '@/app/model/menu';
 import MenuCategory from './Category';
 
-interface Props {
-    data: MenuEntity;
-}
+import { default as menuData } from '@root/generated/menu.json';
 
-const Menu: React.FC<Props> = ({ data: items }: Props) => (
+const Menu: React.FC = () => (
     <nav>
         <ul>
-            {items.map((category) => (
+            {menuData.map((category) => (
                 <MenuCategory category={category} key={category.name} />
             ))}
         </ul>

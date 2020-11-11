@@ -4,9 +4,10 @@ import '@testing-library/jest-dom/extend-expect';
 
 import Root from './Root';
 
-it('contains elements', () => {
-    render(<Root menuData={[]} />);
+it('renders home', () => {
+    window.history.pushState({}, 'Home Page', '/');
 
-    expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument();
-    expect(screen.getByRole('navigation')).toBeInTheDocument();
+    render(<Root />);
+
+    expect(screen.getByRole('main')).toBeInTheDocument();
 });

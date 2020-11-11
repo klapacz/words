@@ -4,8 +4,10 @@ import '@testing-library/jest-dom/extend-expect';
 
 import Menu from './index';
 
+jest.mock('@root/generated/menu.json', () => []);
+
 it('renders empty menu', () => {
-    render(<Menu data={[]} />);
+    render(<Menu />);
 
     expect(screen.getByRole('list')).toBeInTheDocument();
 });

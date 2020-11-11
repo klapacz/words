@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CategoryEntity } from '@/app/model/menu';
+import { CategoryEntity } from '@/model/menu';
 import Item from './Item';
 
 interface Props {

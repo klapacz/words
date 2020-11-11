@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { ItemEntity } from '@/app/model/menu';
+import { Link } from 'react-router-dom';
+import { ItemEntity } from '@/model/menu';
 
 interface Props {
     item: ItemEntity;
@@ -8,7 +9,7 @@ interface Props {
 const CategoryItem: React.FC<Props> = ({ item }: Props) => {
     return (
         <li>
-            <a href={item.url}>{item.name}</a>
+            <Link to={item.url}>{item.name}</Link>
         </li>
     );
 };
