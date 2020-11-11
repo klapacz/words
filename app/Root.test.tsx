@@ -1,13 +1,20 @@
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import { cleanup, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
+import { renderWithRouter } from '@root/tests/helpers';
 import Root from './Root';
 
+afterEach(() => cleanup());
+
 it('renders home', () => {
-    window.history.pushState({}, 'Home Page', '/');
+    renderWithRouter(<Root />);
 
-    render(<Root />);
+    expect(screen.getByRole('navigation')).toBeInTheDocument();
+});
 
-    expect(screen.getByRole('main')).toBeInTheDocument();
+it('renders another', () => {
+    renderWithRouter(<Root />, '/test');
+
+    expect(() => screen.getByRole('navigation', {})).toThrow();
 });

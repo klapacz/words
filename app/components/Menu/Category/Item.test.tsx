@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { Router } from 'react-router-dom';
+import { screen, fireEvent, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { createMemoryHistory } from 'history';
 
+import { renderWithRouter } from '@root/tests/helpers';
 import Item from './Item';
 
 const item = {
@@ -11,14 +10,10 @@ const item = {
     url: '/url',
 };
 
-it('renders MenuItem correctly', () => {
-    const history = createMemoryHistory();
+afterEach(() => cleanup());
 
-    render(
-        <Router history={history}>
-            <Item item={item} />
-        </Router>
-    );
+it('renders MenuItem correctly', () => {
+    const { history } = renderWithRouter(<Item item={item} />);
 
     const linkElement = screen.getByRole('link');
 

@@ -1,16 +1,18 @@
 import * as React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
+import Words from './pages/Words';
 
 const Root: React.FC = () => (
-    <Router>
-        <Switch>
-            <Route path="/">
-                <Home />
-            </Route>
-        </Switch>
-    </Router>
+    <Switch>
+        <Route exact path="/">
+            <Home />
+        </Route>
+        <Route path="/:name">
+            <Words />
+        </Route>
+    </Switch>
 );
 
 export default Root;

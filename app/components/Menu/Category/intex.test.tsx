@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { render, screen, within } from '@testing-library/react';
+import { cleanup, screen, within } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { MemoryRouter } from 'react-router-dom';
 import { CategoryEntity, ItemEntity } from '@/model/menu';
+
+import { renderWithRouter } from '@root/tests/helpers';
 
 import Category from './index';
 
@@ -22,8 +23,10 @@ const items: ItemEntity[] = [
     },
 ];
 
+afterEach(() => cleanup());
+
 it('renders category without items', () => {
-    render(<Category category={category} />, { wrapper: MemoryRouter });
+    renderWithRouter(<Category category={category} />);
 
     const mainElement = screen.getByRole('listitem');
 
@@ -33,7 +36,7 @@ it('renders category without items', () => {
 it('renders items correctly', () => {
     category.items = items;
 
-    render(<Category category={category} />, { wrapper: MemoryRouter });
+    renderWithRouter(<Category category={category} />);
 
     const itemsList = screen.getByRole('list');
     const listElements = within(itemsList).getAllByRole('listitem');
