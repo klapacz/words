@@ -9,7 +9,7 @@ const Root: React.FC = () => (
         <Route exact path="/">
             <Home />
         </Route>
-        <Route path="/:name">
+        <Route path="/:category/:wordSet">
             <Words />
         </Route>
     </Switch>

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { CategoryEntity } from '@/model/menu';
+import { Category } from '@/store/menu/types';
 import Item from './Item';
 
 interface Props {
-    category: CategoryEntity;
+    category: Category;
 }
 
 const Category: React.FC<Props> = ({ category }: Props) => (

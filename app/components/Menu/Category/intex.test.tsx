@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { cleanup, screen, within } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { CategoryEntity, ItemEntity } from '@/model/menu';
+import { Category as CategoryType, WordSet } from '@/store/menu/types';
 
 import { renderWithRouter } from '@root/tests/helpers';
 
 import Category from './index';
 
-const category: CategoryEntity = {
+const category: CategoryType = {
     name: 'Super Category',
     items: [],
 };
 
-const items: ItemEntity[] = [
+const items: WordSet[] = [
     {
         name: 'First',
         url: '/first',

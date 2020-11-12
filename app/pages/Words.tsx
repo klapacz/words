@@ -1,12 +1,24 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
+// import { useQuery } from 'react-query';
 
 const Words: React.FC = () => {
-    const { name }: { name: string } = useParams();
-    console.log(name);
-    console.log(useParams());
+    const {
+        category,
+        wordSet,
+    }: { category: string; wordSet: string } = useParams();
 
-    return <main>{name}</main>;
+    // const { isLoading, error, data } = useQuery('repoData', () =>
+    //     fetch(
+    //         'https://api.github.com/repos/tannerlinsley/react-query'
+    //     ).then((res) => res.json())
+    // );
+
+    return (
+        <main>
+            /{category}/{wordSet}
+        </main>
+    );
 };
 
 export default Words;

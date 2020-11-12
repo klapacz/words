@@ -1,7 +1,7 @@
-import MenuEntity from '@/model/menu';
+import { MenuState } from '@/store/menu/types';
 
 declare module 'menu.json' {
-    const value: MenuEntity;
+    const value: MenuState['menu'];
 
     export default value;
 }

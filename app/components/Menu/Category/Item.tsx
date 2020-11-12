@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { ItemEntity } from '@/model/menu';
+import { WordSet } from '@/store/menu/types';
 
 interface Props {
-    item: ItemEntity;
+    item: WordSet;
 }
 
 const CategoryItem: React.FC<Props> = ({ item }: Props) => {

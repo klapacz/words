@@ -5,6 +5,9 @@ import '@testing-library/jest-dom/extend-expect';
 import { renderWithRouter } from '@root/tests/helpers';
 import Root from './Root';
 
+jest.mock('./pages/Home', () => jest.fn().mockReturnValue(<nav></nav>));
+jest.mock('./pages/Words', () => jest.fn().mockReturnValue(<main></main>));
+
 afterEach(() => cleanup());
 
 it('renders home', () => {
