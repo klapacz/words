@@ -1,2 +1,2 @@
-export const serialize = (str: string): string =>
+export const serializeToURL = (str: string): string =>
     encodeURI(str.replace(' ', '-').toLowerCase());

@@ -6,6 +6,7 @@ import { Category as CategoryType, WordSet } from '@/store/menu/types';
 import { renderWithRouter } from '@root/tests/helpers';
 
 import Category from './index';
+import { serializeToURL } from '@root/app/helpers';
 
 const category: CategoryType = {
     name: 'Super Category',
@@ -33,13 +34,24 @@ it('renders category without items', () => {
     expect(mainElement).toHaveTextContent(category.name);
 });
 
-it('renders items correctly', () => {
-    category.items = items;
-
-    renderWithRouter(<Category category={category} />);
+it('renders correct number of items', () => {
+    renderWithRouter(<Category category={{ ...category, items }} />);
 
     const itemsList = screen.getByRole('list');
     const listElements = within(itemsList).getAllByRole('listitem');
 
     expect(listElements.length).toEqual(2);
+});
+
+it('renders correct link', () => {
+    const item = items[0];
+
+    renderWithRouter(<Category category={{ ...category, items: [item] }} />);
+
+    const link = screen.getByRole('link');
+    expect(link).toHaveTextContent(item.name);
+    expect(link).toHaveAttribute(
+        'href',
+        serializeToURL(`/${category.name}/${item.name}`)
+    );
 });
