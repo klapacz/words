@@ -10,5 +10,8 @@ module.exports = {
     moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
         prefix: '<rootDir>',
     }),
-    setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+    setupFilesAfterEnv: [
+        '@testing-library/jest-dom/extend-expect',
+        'whatwg-fetch',
+    ],
 };

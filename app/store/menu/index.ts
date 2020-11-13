@@ -18,14 +18,21 @@ export const slice = createSlice({
 
 export const selectMenu = (state: State): MenuState['menu'] => state.menu.menu;
 
+export interface SelectByOutputSelectorReturn {
+    category: Category;
+    wordSet: WordSet;
+}
+
+export type SelectByOutputSelector = OutputSelector<
+    State,
+    SelectByOutputSelectorReturn,
+    (menu: MenuState['menu']) => SelectByOutputSelectorReturn
+>;
+
 export const selectBy = (
     serializedCategoryName: string,
     serializedWordSetName: string
-): OutputSelector<
-    State,
-    [Category, WordSet],
-    (menu: MenuState['menu']) => [Category, WordSet]
-> =>
+): SelectByOutputSelector =>
     createSelector([selectMenu], (menu) => {
         for (const category of menu) {
             if (serializeToURL(category.name) !== serializedCategoryName) {
@@ -37,7 +44,7 @@ export const selectBy = (
                     continue;
                 }
 
-                return [category, wordSet];
+                return { category, wordSet };
             }
 
             return null;

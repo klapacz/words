@@ -26,9 +26,12 @@ describe('SelectMenu', () => {
 
 describe('selectBy selector test', () => {
     it('selects correct element', () => {
-        expect(selectBy('category-1', 'first')(state)).toMatchObject([
-            { name: 'Category 1', items: [{ name: 'First', url: '/first' }] },
-            { name: 'First', url: '/first' },
-        ]);
+        expect(selectBy('category-1', 'first')(state)).toMatchObject({
+            category: {
+                name: 'Category 1',
+                items: [{ name: 'First', url: '/first' }],
+            },
+            wordSet: { name: 'First', url: '/first' },
+        });
     });
 });
