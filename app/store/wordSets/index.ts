@@ -38,4 +38,6 @@ export const slice = createSlice({
     },
 });
 
+export * from './types';
+
 export default slice.reducer;

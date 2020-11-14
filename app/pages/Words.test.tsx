@@ -3,15 +3,15 @@ import { cleanup, screen } from '@testing-library/react';
 import { useSelector } from 'react-redux';
 
 import { renderWithRouter } from '@root/tests/helpers';
-import { SelectByOutputSelectorReturn } from '@/store/menu';
+import { PageData } from '@/store/menu';
 import Words from './Words';
-import { Props as ShowComponentProps } from '@/components/wordSet/Show';
+import { ShowProps } from '@/components/wordSet/Show';
 
 jest.mock('@/components/wordSet/Show', () =>
     jest
         .fn()
-        .mockImplementation(({ pageData }: ShowComponentProps) => (
-            <main>{pageData.wordSet.name}</main>
+        .mockImplementation(({ pageData }: ShowProps) => (
+            <main>{pageData.wordSetMenuData.name}</main>
         ))
 );
 
@@ -21,12 +21,12 @@ afterEach(() => cleanup());
 
 it('renders correct page', () => {
     (useSelector as jest.Mock).mockImplementationOnce(
-        (): SelectByOutputSelectorReturn => ({
+        (): PageData => ({
             category: {
                 name: 'Category 1',
                 items: [{ name: 'Unit 1', url: '/api/1/1.json' }],
             },
-            wordSet: { name: 'Unit 1', url: '/api/1/1.json' },
+            wordSetMenuData: { name: 'Unit 1', url: '/api/1/1.json' },
         })
     );
 

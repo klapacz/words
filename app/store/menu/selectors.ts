@@ -7,15 +7,15 @@ import { serializeToURL } from '@root/app/helpers';
 export const selectMenu = (state: Partial<State>): MenuState['menu'] =>
     state.menu.menu;
 
-export interface SelectByOutputSelectorReturn {
+export interface PageData {
     category: Category;
-    wordSet: WordSet;
+    wordSetMenuData: WordSet;
 }
 
 export type SelectByOutputSelector = OutputSelector<
     Partial<State>,
-    SelectByOutputSelectorReturn,
-    (menu: MenuState['menu']) => SelectByOutputSelectorReturn
+    PageData,
+    (menu: MenuState['menu']) => PageData
 >;
 
 export const selectBy = (
@@ -28,12 +28,15 @@ export const selectBy = (
                 continue;
             }
 
-            for (const wordSet of category.items) {
-                if (serializeToURL(wordSet.name) !== serializedWordSetName) {
+            for (const wordSetMenuData of category.items) {
+                if (
+                    serializeToURL(wordSetMenuData.name) !==
+                    serializedWordSetName
+                ) {
                     continue;
                 }
 
-                return { category, wordSet };
+                return { category, wordSetMenuData };
             }
 
             return null;

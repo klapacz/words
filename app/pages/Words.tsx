@@ -3,8 +3,9 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { selectBy } from '../store/menu';
 import Show from '@/components/wordSet/Show';
+import { PageData } from '@/store/menu/index';
 
-interface Params {
+interface urlParams {
     category: string;
     wordSet: string;
 }
@@ -13,9 +14,9 @@ const Words: React.FC = () => {
     const {
         category: categorySerializedName,
         wordSet: wordSetSerializedName,
-    }: Params = useParams();
+    }: urlParams = useParams();
 
-    const pageData = useSelector(
+    const pageData: PageData = useSelector(
         selectBy(categorySerializedName, wordSetSerializedName)
     );
 

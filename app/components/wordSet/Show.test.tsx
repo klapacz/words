@@ -6,25 +6,26 @@ import store from '@/store';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
-import Show, { Props } from './Show';
+import Show from './Show';
+import { PageData } from '@/store/menu/index';
 import { fakeWordSet } from '@/store/wordSets/index.test';
 
 const server = setupServer(
     rest.get('/test', (req, res, ctx) => res(ctx.json(fakeWordSet)))
 );
 
-const wordSet = { name: 'Another Item', url: '/test' };
-const props: Props['pageData'] = {
+const wordSetMenuData = { name: 'Another Item', url: '/test' };
+const props: PageData = {
     category: {
         name: 'Another Category',
-        items: [wordSet],
+        items: [wordSetMenuData],
     },
-    wordSet,
+    wordSetMenuData,
 };
 
 beforeAll(() => server.listen());
 
-beforeEach(() => (wordSet.name = Math.random().toString()));
+beforeEach(() => (wordSetMenuData.name = Math.random().toString()));
 
 afterEach(() => {
     cleanup();

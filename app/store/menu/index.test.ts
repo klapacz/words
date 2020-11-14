@@ -31,7 +31,7 @@ describe('selectBy selector test', () => {
                 name: 'Category 1',
                 items: [{ name: 'First', url: '/first' }],
             },
-            wordSet: { name: 'First', url: '/first' },
+            wordSetMenuData: { name: 'First', url: '/first' },
         });
     });
 });

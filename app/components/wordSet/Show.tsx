@@ -1,37 +1,46 @@
 import * as React from 'react';
-import { WordSet, Category } from '@/store/menu/types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchWordSet, selectWordSet } from '@root/app/store/wordSets';
+import { fetchWordSet, selectWordSet, WordSet } from '@root/app/store/wordSets';
+import { PageData } from '@/store/menu/index';
 
-export interface Props {
-    pageData: {
-        category: Category;
-        wordSet: WordSet;
-    };
+export interface ResolverProps {
+    pageData: PageData;
 }
 
-const Show: React.FC<Props> = ({ pageData: { category, wordSet } }: Props) => {
+export interface ShowProps {
+    pageData: PageData;
+    wordSetData: WordSet;
+}
+
+const Show: React.FC<ShowProps> = ({ wordSetData }: ShowProps) => (
+    <pre>
+        <code>{JSON.stringify(wordSetData, null, '\t')}</code>
+    </pre>
+);
+
+const ShowDataResolver: React.FC<ResolverProps> = ({
+    pageData,
+}: ResolverProps) => {
+    const { wordSetMenuData } = pageData;
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchWordSet(wordSet.url));
-    }, [dispatch, wordSet]);
+        dispatch(fetchWordSet(wordSetMenuData.url));
+    }, [dispatch, wordSetMenuData]);
 
-    const wordSetData = useSelector(selectWordSet(wordSet.url));
+    const wordSetData = useSelector(selectWordSet(wordSetMenuData.url));
 
     return (
         <main>
-            <h1>{wordSet.name}</h1>
+            <h1>{wordSetMenuData.name}</h1>
             {!wordSetData ? (
                 'Ładowanie…'
             ) : (
-                <pre>
-                    <code>{JSON.stringify(wordSetData, null, '\t')}</code>
-                </pre>
+                <Show pageData={pageData} wordSetData={wordSetData} />
             )}
         </main>
     );
 };
 
-export default Show;
+export default ShowDataResolver;
