@@ -1,16 +1,16 @@
 import * as React from 'react';
+import { Provider } from 'react-redux';
 import { cleanup, screen, render } from '@testing-library/react';
+import store from '@/store';
 
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
-import Show from './Show';
-import { Props } from '@/components/wordSet/Show';
+import Show, { Props } from './Show';
+import { fakeWordSet } from '@/store/wordSets/index.test';
 
 const server = setupServer(
-    rest.get('/test', (req, res, ctx) =>
-        res(ctx.delay(1000), ctx.json({ test: 'test' }))
-    )
+    rest.get('/test', (req, res, ctx) => res(ctx.json(fakeWordSet)))
 );
 
 const wordSet = { name: 'Another Item', url: '/test' };
@@ -35,34 +35,16 @@ afterAll(() => server.close());
 jest.spyOn(window, 'fetch');
 
 it('test loading data', async () => {
-    render(<Show pageData={props} />);
-
-    expect(window.fetch).toHaveBeenCalled();
-
-    expect(
-        await screen.findByText(/\{.+\}/i, {}, { timeout: 30000 })
-    ).toBeInTheDocument();
-});
-
-jest.spyOn(console, 'error').mockImplementation();
-
-it('test fail', async () => {
-    wordSet.url = 'not-existing';
-    render(<Show pageData={props} />);
-
-    expect(screen.getByText('Ładowanie…')).toBeInTheDocument();
-    expect(window.fetch).toHaveBeenCalled();
-
-    const alert = await screen.findByRole(
-        'alert',
-        {},
-        {
-            timeout: 30000,
-        }
+    render(
+        <Provider store={store}>
+            <Show pageData={props} />
+        </Provider>
     );
 
-    expect(console.error).toHaveBeenCalled();
-    expect(alert).toHaveTextContent('Błąd pobierania danych');
+    expect(screen.getByText(/ładowanie/i)).toBeInTheDocument();
+
+    expect(window.fetch).toHaveBeenCalled();
+    expect(await screen.findByText(/\{.+\}/i)).toBeInTheDocument();
 });
 
 jest.setTimeout(30000);

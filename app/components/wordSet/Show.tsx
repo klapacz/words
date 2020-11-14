@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { useQuery } from 'react-query';
 import { WordSet, Category } from '@/store/menu/types';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchWordSet, selectWordSet } from '@root/app/store/wordSets';
 
 export interface Props {
     pageData: {
@@ -10,27 +12,23 @@ export interface Props {
 }
 
 const Show: React.FC<Props> = ({ pageData: { category, wordSet } }: Props) => {
-    const {
-        isLoading,
-        error,
-        data,
-    } = useQuery(`${category.name}/${wordSet.name}`, () =>
-        fetch(wordSet.url).then((res) => res.json())
-    );
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchWordSet(wordSet.url));
+    }, [dispatch, wordSet]);
+
+    const wordSetData = useSelector(selectWordSet(wordSet.url));
 
     return (
         <main>
             <h1>{wordSet.name}</h1>
-            {isLoading ? (
+            {!wordSetData ? (
                 'Ładowanie…'
-            ) : error ? (
-                <h2 role="alert">Błąd pobierania danych</h2>
             ) : (
-                data && (
-                    <pre>
-                        <code>{JSON.stringify(data, null, '\t')}</code>
-                    </pre>
-                )
+                <pre>
+                    <code>{JSON.stringify(wordSetData, null, '\t')}</code>
+                </pre>
             )}
         </main>
     );
