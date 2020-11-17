@@ -4,43 +4,39 @@ import { Category, MenuState, WordSet } from './types';
 
 import { serializeToURL } from '@root/app/helpers';
 
-export const selectMenu = (state: Partial<State>): MenuState['menu'] =>
-    state.menu.menu;
+export const selectMenu = (state: Partial<State>): MenuState['menu'] => state.menu.menu;
 
 export interface PageData {
-    category: Category;
-    wordSetMenuData: WordSet;
+	category: Category;
+	wordSetMenuData: WordSet;
 }
 
 export type SelectByOutputSelector = OutputSelector<
-    Partial<State>,
-    PageData,
-    (menu: MenuState['menu']) => PageData
+	Partial<State>,
+	PageData,
+	(menu: MenuState['menu']) => PageData
 >;
 
 export const selectBy = (
-    serializedCategoryName: string,
-    serializedWordSetName: string
+	serializedCategoryName: string,
+	serializedWordSetName: string
 ): SelectByOutputSelector =>
-    createSelector([selectMenu], (menu) => {
-        for (const category of menu) {
-            if (serializeToURL(category.name) !== serializedCategoryName) {
-                continue;
-            }
+	createSelector([selectMenu], (menu) => {
+		for (const category of menu) {
+			if (serializeToURL(category.name) !== serializedCategoryName) {
+				continue;
+			}
 
-            for (const wordSetMenuData of category.items) {
-                if (
-                    serializeToURL(wordSetMenuData.name) !==
-                    serializedWordSetName
-                ) {
-                    continue;
-                }
+			for (const wordSetMenuData of category.items) {
+				if (serializeToURL(wordSetMenuData.name) !== serializedWordSetName) {
+					continue;
+				}
 
-                return { category, wordSetMenuData };
-            }
+				return { category, wordSetMenuData };
+			}
 
-            return null;
-        }
+			return null;
+		}
 
-        return null;
-    });
+		return null;
+	});

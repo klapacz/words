@@ -27,10 +27,13 @@
         }
     },
     "rules": {
+        "indent": ["error", "tab"],
         "prettier/prettier": [
             "error",
-            {
+            {  
+                "useTabs": true,
                 "tabWidth": 4,
+                "printWidth": 100,
                 "singleQuote": true
             }
         ]

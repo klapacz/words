@@ -3,10 +3,10 @@ import menuReducer from './menu';
 import wordSetsReducer from './wordSets';
 
 const store = configureStore({
-    reducer: {
-        menu: menuReducer,
-        wordSets: wordSetsReducer,
-    },
+	reducer: {
+		menu: menuReducer,
+		wordSets: wordSetsReducer,
+	},
 });
 
 export default store;

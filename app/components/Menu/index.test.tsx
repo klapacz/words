@@ -7,11 +7,11 @@ import { renderWithRouter } from '@root/tests/helpers';
 afterEach(() => cleanup());
 
 jest.mock('react-redux', () => ({
-    useSelector: jest.fn().mockReturnValue([]),
+	useSelector: jest.fn().mockReturnValue([]),
 }));
 
 it('renders empty menu', () => {
-    renderWithRouter(<Menu />);
+	renderWithRouter(<Menu />);
 
-    expect(screen.getByRole('list')).toBeInTheDocument();
+	expect(screen.getByRole('list')).toBeInTheDocument();
 });

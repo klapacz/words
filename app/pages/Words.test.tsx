@@ -5,12 +5,12 @@ import { useSelector } from 'react-redux';
 import { renderWithRouter } from '@root/tests/helpers';
 import { PageData } from '@/store/menu';
 import Words from './Words';
-import { ShowProps } from '@/components/wordSet/Show';
+import { ResolverProps } from '@/components/wordSet/Show';
 
 jest.mock('@/components/wordSet/Show', () =>
     jest
         .fn()
-        .mockImplementation(({ pageData }: ShowProps) => (
+        .mockImplementation(({ pageData }: ResolverProps) => (
             <main>{pageData.wordSetMenuData.name}</main>
         ))
 );

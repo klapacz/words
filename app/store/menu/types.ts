@@ -1,13 +1,13 @@
 export interface WordSet {
-    name: string;
-    url: string;
+	name: string;
+	url: string;
 }
 
 export interface Category {
-    name: string;
-    items: WordSet[];
+	name: string;
+	items: WordSet[];
 }
 
 export interface MenuState {
-    menu: Category[];
+	menu: Category[];
 }
