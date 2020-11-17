@@ -1,43 +1,56 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { State } from '..';
-import { Words, WordSetsState, WordSet } from './types';
-
-const sliceName = 'wordSets';
-
-export const fetchWordSet = createAsyncThunk(
-    `${sliceName}/fetch`,
-    async (wordSetURL: string): Promise<[string, Words[]]> => {
-        // TODO: error handling
-        const json = await fetch(wordSetURL);
-        const res = await json.json();
-
-        return [wordSetURL, res.words];
-    }
-);
+import { createSlice } from '@reduxjs/toolkit';
+import { WordSetsState } from './types';
+import { fetchWordSet, setCurrentWordDone } from './actions';
 
 const initialState: WordSetsState = {
-    wordSets: {},
+	wordSets: {},
 };
 
-export const selectWordSet = (wordSetURL: string) => (
-    state: Partial<State>
-): WordSet => state.wordSets.wordSets[wordSetURL];
-
 export const slice = createSlice({
-    name: sliceName,
-    initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-        builder.addCase(fetchWordSet.fulfilled, (state, action) => {
-            const [wordSetUrl, words] = action.payload;
+	name: 'wordSets',
+	initialState,
+	reducers: {},
+	extraReducers: (builder) => {
+		builder
+			.addCase(setCurrentWordDone, (state, action) => {
+				const wordSetURL = action.payload;
+				const session = state.wordSets[wordSetURL].session;
 
-            state.wordSets[wordSetUrl] = {
-                words,
-            };
-        });
-    },
+				state.wordSets[wordSetURL].session.words = session.words.filter(
+					(word, index) => index !== session.current
+				);
+
+				const max = state.wordSets[wordSetURL].session.words.length - 1;
+				const current = Math.floor(Math.random() * Math.floor(max));
+
+				state.wordSets[wordSetURL].session.current = current;
+			})
+
+			.addCase(fetchWordSet.fulfilled, (state, action) => {
+				const [wordSetURL, words] = action.payload;
+
+				const serializedWords = Object.entries(words).map(([original, translation]) => ({
+					original,
+					translation,
+				}));
+
+				const current = Math.floor(Math.random() * Math.floor(serializedWords.length - 1));
+
+				const newWordSet = {
+					words: serializedWords,
+					session: {
+						words: [...serializedWords],
+						current,
+					},
+				};
+
+				state.wordSets[wordSetURL] = newWordSet;
+			});
+	},
 });
 
 export * from './types';
+export * from './selectors';
+export * from './actions';
 
 export default slice.reducer;

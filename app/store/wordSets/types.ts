@@ -1,11 +1,18 @@
-export type Words = [original: string, translation: string];
+export interface Word {
+	original: string;
+	translation: string;
+}
 
 export interface WordSet {
-    words?: Words[];
+	words?: Word[];
+	session?: {
+		words: Word[];
+		current: number;
+	};
 }
 
 export interface WordSetsState {
-    wordSets: {
-        [wordSetURL: string]: WordSet;
-    };
+	wordSets: {
+		[wordSetURL: string]: WordSet;
+	};
 }

@@ -1,46 +1,76 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchWordSet, selectWordSet, WordSet } from '@root/app/store/wordSets';
+import { useEffect, useState } from 'react';
+import {
+	fetchWordSet,
+	selectCurrentWord,
+	selectWordSet,
+	setCurrentWordDone,
+} from '@root/app/store/wordSets';
 import { PageData } from '@/store/menu/index';
 
 export interface ResolverProps {
-    pageData: PageData;
+	pageData: PageData;
 }
 
 export interface ShowProps {
-    pageData: PageData;
-    wordSetData: WordSet;
+	wordSetMenuData: PageData['wordSetMenuData'];
 }
 
-const Show: React.FC<ShowProps> = ({ wordSetData }: ShowProps) => (
-    <pre>
-        <code>{JSON.stringify(wordSetData, null, '\t')}</code>
-    </pre>
-);
+const Show: React.FC<ShowProps> = ({ wordSetMenuData }: ShowProps) => {
+	const { url } = wordSetMenuData;
+	const dispatch = useDispatch();
+	const word = useSelector(selectCurrentWord(url));
+	const [userTranslation, setUserTranslation] = useState('');
 
-const ShowDataResolver: React.FC<ResolverProps> = ({
-    pageData,
-}: ResolverProps) => {
-    const { wordSetMenuData } = pageData;
-    const dispatch = useDispatch();
+	const handleFormSubmit = (event: React.FormEvent) => {
+		event.preventDefault();
 
-    useEffect(() => {
-        dispatch(fetchWordSet(wordSetMenuData.url));
-    }, [dispatch, wordSetMenuData]);
+		if (userTranslation.trim() === word.original.trim()) {
+			dispatch(setCurrentWordDone(url));
+		}
 
-    const wordSetData = useSelector(selectWordSet(wordSetMenuData.url));
+		setUserTranslation('');
+	};
 
-    return (
-        <main>
-            <h1>{wordSetMenuData.name}</h1>
-            {!wordSetData ? (
-                'Ładowanie…'
-            ) : (
-                <Show pageData={pageData} wordSetData={wordSetData} />
-            )}
-        </main>
-    );
+	return (
+		<div>
+			<h2>Wpisz tłumaczenie dla {word.translation}</h2>
+			<label htmlFor="to-translate">Poprawne tłumaczenie</label>
+			<form onSubmit={handleFormSubmit}>
+				<input
+					id="to-translate"
+					value={userTranslation}
+					autoFocus
+					onChange={({ target }) => setUserTranslation(target.value)}
+				/>
+			</form>
+		</div>
+	);
+};
+
+const ShowDataResolver: React.FC<ResolverProps> = ({ pageData }: ResolverProps) => {
+	const { wordSetMenuData } = pageData;
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(fetchWordSet(wordSetMenuData.url));
+	}, [dispatch, wordSetMenuData]);
+
+	const wordSetData = useSelector(selectWordSet(wordSetMenuData.url));
+
+	return (
+		<main>
+			<h1>{wordSetMenuData.name}</h1>
+			{!wordSetData ? (
+				'Ładowanie…'
+			) : wordSetData.session.words.length ? (
+				<Show wordSetMenuData={wordSetMenuData} />
+			) : (
+				'Koniec'
+			)}
+		</main>
+	);
 };
 
 export default ShowDataResolver;
