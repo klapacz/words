@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { WordSetsState } from './types';
-import { fetchWordSet, setCurrentWordDone } from './actions';
+import { fetchWordSet, setCurrentWordDone, setCurrentWordFailed } from './actions';
 
 const initialState: WordSetsState = {
 	wordSets: {},
@@ -15,15 +15,31 @@ export const slice = createSlice({
 			.addCase(setCurrentWordDone, (state, action) => {
 				const wordSetURL = action.payload;
 				const session = state.wordSets[wordSetURL].session;
+				const { failed } = session.words[session.current];
 
-				state.wordSets[wordSetURL].session.words = session.words.filter(
-					(word, index) => index !== session.current
-				);
+				if (!failed || failed === 1) {
+					session.words = session.words.filter(
+						(word, index) => index !== session.current
+					);
 
-				const max = state.wordSets[wordSetURL].session.words.length - 1;
-				const current = Math.floor(Math.random() * Math.floor(max));
+					const max = state.wordSets[wordSetURL].session.words.length - 1;
+					const current = Math.floor(Math.random() * Math.floor(max));
 
-				state.wordSets[wordSetURL].session.current = current;
+					session.current = current;
+
+					return;
+				}
+
+				session.words[session.current].failed = session.words[session.current].failed - 1;
+			})
+
+			.addCase(setCurrentWordFailed, (state, action) => {
+				const wordSetURL = action.payload;
+				const session = state.wordSets[wordSetURL].session;
+
+				if (!session.words[session.current].failed) {
+					state.wordSets[wordSetURL].session.words[session.current].failed = 3;
+				}
 			})
 
 			.addCase(fetchWordSet.fulfilled, (state, action) => {

@@ -12,3 +12,4 @@ export const fetchWordSet = createAsyncThunk(
 );
 
 export const setCurrentWordDone = createAction<string>('wordSets/setWordDone');
+export const setCurrentWordFailed = createAction<string>('wordSets/setCurrentWordFailed ');

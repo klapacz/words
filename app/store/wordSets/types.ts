@@ -1,4 +1,5 @@
 export interface Word {
+	failed?: number;
 	original: string;
 	translation: string;
 }

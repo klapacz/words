@@ -7,6 +7,7 @@ import {
 	selectStatsForWordSet,
 	selectWordSet,
 	setCurrentWordDone,
+	setCurrentWordFailed,
 } from '@root/app/store/wordSets';
 import { PageData } from '@/store/menu/index';
 
@@ -30,6 +31,8 @@ const Show: React.FC<ShowProps> = ({ wordSetMenuData }: ShowProps) => {
 
 		if (userTranslation.trim() === word.original.trim()) {
 			dispatch(setCurrentWordDone(url));
+		} else {
+			dispatch(setCurrentWordFailed(url));
 		}
 
 		setUserTranslation('');
@@ -37,11 +40,17 @@ const Show: React.FC<ShowProps> = ({ wordSetMenuData }: ShowProps) => {
 
 	return (
 		<div>
-			<h2>Wpisz tłumaczenie dla {word.translation}</h2>
-			<label htmlFor="to-translate">Poprawne tłumaczenie</label>
+			<h2>
+				Wpisz tłumaczenie dla „{word.translation}”
+				{word.failed && ` (jeszcze ${word.failed} razy)`}
+			</h2>
+
+			{word.failed && <p>Błąd! Poprawne tłumaczenie to „{word.original}”</p>}
+
 			<p>
 				ukończono {progress}/{max}
 			</p>
+			<label htmlFor="to-translate">Poprawne tłumaczenie</label>
 			<form onSubmit={handleFormSubmit}>
 				<input
 					id="to-translate"
