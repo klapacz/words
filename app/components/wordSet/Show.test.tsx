@@ -48,6 +48,34 @@ it('test loading data', async () => {
 	const { translation } = wordSetsState.session.words[wordSetsState.session.current];
 
 	expect(h2).toHaveTextContent(new RegExp(translation, 'i'));
+
+	const stats = screen.getByText(/ukończono/i);
+	expect(stats).toHaveTextContent(new RegExp(`0/${wordSetsState.words.length}`, 'i'));
+});
+
+it('stats are changing', async () => {
+	render(
+		<Provider store={store}>
+			<Show pageData={props} />
+		</Provider>
+	);
+
+	expect(window.fetch).toHaveBeenCalled();
+	await screen.findByRole('heading', { level: 2 });
+
+	const input = await screen.getByLabelText(/Poprawne tłumaczenie/i);
+	let wordSetsState = store.getState().wordSets.wordSets['/test-word-set'];
+	const { original } = wordSetsState.session.words[wordSetsState.session.current];
+
+	fireEvent.change(input, {
+		target: { value: original },
+	});
+
+	fireEvent.submit(input);
+
+	wordSetsState = store.getState().wordSets.wordSets['/test-word-set'];
+	const stats = screen.getByText(/ukończono/i);
+	expect(stats).toHaveTextContent(new RegExp(`1/${wordSetsState.words.length}`, 'i'));
 });
 
 it('test end of words', async () => {

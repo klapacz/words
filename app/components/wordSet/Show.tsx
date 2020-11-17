@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import {
 	fetchWordSet,
 	selectCurrentWord,
+	selectStatsForWordSet,
 	selectWordSet,
 	setCurrentWordDone,
 } from '@root/app/store/wordSets';
@@ -21,6 +22,7 @@ const Show: React.FC<ShowProps> = ({ wordSetMenuData }: ShowProps) => {
 	const { url } = wordSetMenuData;
 	const dispatch = useDispatch();
 	const word = useSelector(selectCurrentWord(url));
+	const [progress, max] = useSelector(selectStatsForWordSet(url));
 	const [userTranslation, setUserTranslation] = useState('');
 
 	const handleFormSubmit = (event: React.FormEvent) => {
@@ -37,6 +39,9 @@ const Show: React.FC<ShowProps> = ({ wordSetMenuData }: ShowProps) => {
 		<div>
 			<h2>Wpisz tłumaczenie dla {word.translation}</h2>
 			<label htmlFor="to-translate">Poprawne tłumaczenie</label>
+			<p>
+				ukończono {progress}/{max}
+			</p>
 			<form onSubmit={handleFormSubmit}>
 				<input
 					id="to-translate"

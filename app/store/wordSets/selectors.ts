@@ -14,3 +14,11 @@ export const selectCurrentWord = (wordSetURL: string) => (state: Partial<State>)
 
 	return word;
 };
+
+export const selectStatsForWordSet = (wordSetURL: string) => (
+	state: Partial<State>
+): [progress: number, max: number] => {
+	const wordSet = state.wordSets.wordSets[wordSetURL];
+
+	return [wordSet.words.length - wordSet.session.words.length, wordSet.words.length];
+};
