@@ -9,7 +9,10 @@ import {
 	setCurrentWordDone,
 	setCurrentWordFailed,
 } from '@root/app/store/wordSets';
+
 import { PageData } from '@/store/menu/index';
+
+import Reset from './Reset';
 
 export interface ResolverProps {
 	pageData: PageData;
@@ -45,6 +48,8 @@ const Show: React.FC<ShowProps> = ({ wordSetMenuData }: ShowProps) => {
 				{word.failed && ` (jeszcze ${word.failed} razy)`}
 			</h2>
 
+			<Reset url={url} />
+
 			{word.failed && <p>Błąd! Poprawne tłumaczenie to „{word.original}”</p>}
 
 			<p>
@@ -66,12 +71,11 @@ const Show: React.FC<ShowProps> = ({ wordSetMenuData }: ShowProps) => {
 const ShowDataResolver: React.FC<ResolverProps> = ({ pageData }: ResolverProps) => {
 	const { wordSetMenuData } = pageData;
 	const dispatch = useDispatch();
+	const wordSetData = useSelector(selectWordSet(wordSetMenuData.url));
 
 	useEffect(() => {
-		dispatch(fetchWordSet(wordSetMenuData.url));
-	}, [dispatch, wordSetMenuData]);
-
-	const wordSetData = useSelector(selectWordSet(wordSetMenuData.url));
+		if (!wordSetData) dispatch(fetchWordSet(wordSetMenuData.url));
+	}, [dispatch, wordSetMenuData, wordSetData]);
 
 	return (
 		<main>
@@ -81,7 +85,10 @@ const ShowDataResolver: React.FC<ResolverProps> = ({ pageData }: ResolverProps) 
 			) : wordSetData.session.words.length ? (
 				<Show wordSetMenuData={wordSetMenuData} />
 			) : (
-				'Koniec'
+				<div>
+					<Reset url={wordSetMenuData.url} />
+					<p>Koniec</p>
+				</div>
 			)}
 		</main>
 	);

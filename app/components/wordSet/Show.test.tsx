@@ -120,6 +120,58 @@ it('test end of words', async () => {
 	expect(screen.getByText(/koniec/i)).toBeInTheDocument();
 });
 
+it('test restart when wordSet complete', async () => {
+	render(
+		<Provider store={store}>
+			<Show pageData={props} />
+		</Provider>
+	);
+
+	expect(window.fetch).toHaveBeenCalled();
+
+	const input = await screen.findByLabelText(/Poprawne tłumaczenie/i);
+	const h2 = screen.getByRole('heading', { level: 2 });
+
+	for (let i = 0; i < Object.entries(fakeWordSet.words).length; i++) {
+		const [, translationToFind] = h2.textContent.match(/„(.+)”/i);
+
+		const original = Object.entries(fakeWordSet.words).find(
+			([, translation]) => translation.trim() === translationToFind.trim()
+		)[0];
+
+		fireEvent.change(input, {
+			target: { value: original },
+		});
+
+		fireEvent.submit(input);
+	}
+
+	const resetButton = screen.getByText(/reset/i);
+	expect(resetButton).toBeInTheDocument();
+	expect(() => screen.getByRole('heading', { level: 2 })).toThrow();
+
+	fireEvent.click(resetButton);
+	expect(window.fetch).toHaveBeenCalled();
+	expect(await screen.findByRole('heading', { level: 2 })).toBeInTheDocument();
+});
+
+it('resets while in wordSet', async () => {
+	render(
+		<Provider store={store}>
+			<Show pageData={props} />
+		</Provider>
+	);
+
+	expect(window.fetch).toHaveBeenCalled();
+
+	await screen.findByRole('heading', { level: 2 });
+	const resetButton = screen.getByText(/reset/i);
+
+	fireEvent.click(resetButton);
+	expect(window.fetch).toHaveBeenCalled();
+	expect(await screen.findByRole('heading', { level: 2 })).toBeInTheDocument();
+});
+
 it('render correctly on wrong input', async () => {
 	render(
 		<Provider store={store}>
