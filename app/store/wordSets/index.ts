@@ -3,7 +3,7 @@ import { WordSetsState } from './types';
 import { fetchWordSet, setCurrentWordDone, setCurrentWordFailed } from './actions';
 
 const initialState: WordSetsState = {
-	wordSets: {},
+	wordSets: JSON.parse(window.localStorage.getItem('wordSets')) || {},
 };
 
 export const slice = createSlice({
@@ -26,6 +26,7 @@ export const slice = createSlice({
 					const current = Math.floor(Math.random() * Math.floor(max));
 
 					session.current = current;
+					// TODO remove 'failed' property if exist
 
 					return;
 				}
