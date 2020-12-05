@@ -10,6 +10,8 @@ import {
 	setCurrentWordFailed,
 } from '@root/app/store/wordSets';
 
+import { Container } from '@/styled';
+
 import { PageData } from '@/store/menu/index';
 
 import Reset from './Reset';
@@ -44,7 +46,7 @@ const Show: React.FC<ShowProps> = ({ wordSetMenuData }: ShowProps) => {
 	return (
 		<div>
 			<h2>
-				Wpisz tłumaczenie dla „{word.translation}”
+				{word.translation}
 				{word.failed && ` (jeszcze ${word.failed} razy)`}
 			</h2>
 
@@ -78,8 +80,8 @@ const ShowDataResolver: React.FC<ResolverProps> = ({ pageData }: ResolverProps) 
 	}, [dispatch, wordSetMenuData, wordSetData]);
 
 	return (
-		<main>
-			<h1>{wordSetMenuData.name}</h1>
+		<Container>
+			<nav>{wordSetMenuData.name}</nav>
 			{!wordSetData ? (
 				'Ładowanie…'
 			) : wordSetData.session.words.length ? (
@@ -90,7 +92,7 @@ const ShowDataResolver: React.FC<ResolverProps> = ({ pageData }: ResolverProps) 
 					<p>Koniec</p>
 				</div>
 			)}
-		</main>
+		</Container>
 	);
 };
 

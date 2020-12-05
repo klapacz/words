@@ -36,7 +36,8 @@
                 "printWidth": 100,
                 "singleQuote": true
             }
-        ]
+        ],
+        "@typescript-eslint/no-empty-interface": "off"
     },
     "overrides": [
         {
