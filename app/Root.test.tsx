@@ -11,13 +11,13 @@ jest.mock('./pages/Words', () => jest.fn().mockReturnValue(<main></main>));
 afterEach(() => cleanup());
 
 it('renders home', () => {
-    renderWithRouter(<Root />);
+	renderWithRouter(<Root />);
 
-    expect(screen.getByRole('navigation')).toBeInTheDocument();
+	expect(screen.getByRole('navigation')).toBeInTheDocument();
 });
 
 it('renders another', () => {
-    renderWithRouter(<Root />, '/test');
+	renderWithRouter(<Root />, '/test');
 
-    expect(() => screen.getByRole('navigation', {})).toThrow();
+	expect(() => screen.getByRole('navigation', {})).toThrow();
 });

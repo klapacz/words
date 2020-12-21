@@ -3,13 +3,13 @@ import { default as menuData } from '@root/generated/menu.json';
 import { MenuState } from './types';
 
 const initialState: MenuState = {
-    menu: menuData,
+	menu: menuData,
 };
 
 export const slice = createSlice({
-    name: 'menu',
-    initialState,
-    reducers: {},
+	name: 'menu',
+	initialState,
+	reducers: {},
 });
 
 export * from './selectors';

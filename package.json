@@ -45,6 +45,7 @@
     "scripts": {
         "dev": "NODE_ENV=development gulp --require @babel/register --gulpfile tasks",
         "build": "NODE_ENV=production gulp build --require @babel/register --gulpfile tasks",
+		"lint": "eslint app/* tests/* tasks/*",
         "test": "jest",
         "test:watch": "jest --watch"
     },

@@ -8,11 +8,11 @@ import Words from './Words';
 import { ResolverProps } from '@/components/wordSet/Show';
 
 jest.mock('@/components/wordSet/Show', () =>
-    jest
-        .fn()
-        .mockImplementation(({ pageData }: ResolverProps) => (
-            <main>{pageData.wordSetMenuData.name}</main>
-        ))
+	jest
+		.fn()
+		.mockImplementation(({ pageData }: ResolverProps) => (
+			<main>{pageData.wordSetMenuData.name}</main>
+		))
 );
 
 jest.mock('react-redux');
@@ -20,25 +20,25 @@ jest.mock('react-redux');
 afterEach(() => cleanup());
 
 it('renders correct page', () => {
-    (useSelector as jest.Mock).mockImplementationOnce(
-        (): PageData => ({
-            category: {
-                name: 'Category 1',
-                items: [{ name: 'Unit 1', url: '/api/1/1.json' }],
-            },
-            wordSetMenuData: { name: 'Unit 1', url: '/api/1/1.json' },
-        })
-    );
+	(useSelector as jest.Mock).mockImplementationOnce(
+		(): PageData => ({
+			category: {
+				name: 'Category 1',
+				items: [{ name: 'Unit 1', url: '/api/1/1.json' }],
+			},
+			wordSetMenuData: { name: 'Unit 1', url: '/api/1/1.json' },
+		})
+	);
 
-    renderWithRouter(<Words />, '/category-1/unit-1', '/:category/:wordSet');
+	renderWithRouter(<Words />, '/category-1/unit-1', '/:category/:wordSet');
 
-    expect(screen.getByRole('main')).toHaveTextContent(/unit 1/i);
+	expect(screen.getByRole('main')).toHaveTextContent(/unit 1/i);
 });
 
 it('renders 404', () => {
-    (useSelector as jest.Mock).mockImplementationOnce(() => null);
+	(useSelector as jest.Mock).mockImplementationOnce(() => null);
 
-    renderWithRouter(<Words />, '/category-1/unit-1', '/:category/:wordSet');
+	renderWithRouter(<Words />, '/category-1/unit-1', '/:category/:wordSet');
 
-    expect(screen.getByRole('main')).toHaveTextContent(/404/i);
+	expect(screen.getByRole('main')).toHaveTextContent(/404/i);
 });

@@ -15,16 +15,20 @@ import { Container } from '@/styled';
 import { PageData } from '@/store/menu/index';
 
 import Reset from './Reset';
+import {
+	Crumbs,
+	ShowHeader,
+	TranslationContainer,
+	TranslationFailed,
+	CorrectTranslation,
+} from '@root/app/styled/wordSet';
 
 export interface ResolverProps {
 	pageData: PageData;
 }
 
-export interface ShowProps {
-	wordSetMenuData: PageData['wordSetMenuData'];
-}
-
-const Show: React.FC<ShowProps> = ({ wordSetMenuData }: ShowProps) => {
+const Show: React.FC<ResolverProps> = ({ pageData }: ResolverProps) => {
+	const { wordSetMenuData, category } = pageData;
 	const { url } = wordSetMenuData;
 	const dispatch = useDispatch();
 	const word = useSelector(selectCurrentWord(url));
@@ -45,27 +49,40 @@ const Show: React.FC<ShowProps> = ({ wordSetMenuData }: ShowProps) => {
 
 	return (
 		<div>
-			<h2>
-				{word.translation}
-				{word.failed && ` (jeszcze ${word.failed} razy)`}
-			</h2>
+			<ShowHeader>
+				<Crumbs>
+					<ol>
+						<li>{category.name}</li>
+						<li>{wordSetMenuData.name}</li>
+						<li title={`ukończono ${progress}/${max}`}>
+							{progress}/{max}
+						</li>
+					</ol>
+				</Crumbs>
+				<Reset url={url} />
+			</ShowHeader>
 
-			<Reset url={url} />
+			<TranslationContainer>
+				<h1>{word.translation}</h1>
 
-			{word.failed && <p>Błąd! Poprawne tłumaczenie to „{word.original}”</p>}
+				{word.failed && (
+					<TranslationFailed>
+						Błąd! Poprawne tłumaczenie to{' '}
+						<CorrectTranslation>{word.original}</CorrectTranslation> Wpisz je jeszcze{' '}
+						<b>{word.failed}</b> razy.
+					</TranslationFailed>
+				)}
 
-			<p>
-				ukończono {progress}/{max}
-			</p>
-			<label htmlFor="to-translate">Poprawne tłumaczenie</label>
-			<form onSubmit={handleFormSubmit}>
-				<input
-					id="to-translate"
-					value={userTranslation}
-					autoFocus
-					onChange={({ target }) => setUserTranslation(target.value)}
-				/>
-			</form>
+				<form onSubmit={handleFormSubmit}>
+					<input
+						id="to-translate"
+						value={userTranslation}
+						placeholder="Poprawne tłumaczenie"
+						autoFocus
+						onChange={({ target }) => setUserTranslation(target.value)}
+					/>
+				</form>
+			</TranslationContainer>
 		</div>
 	);
 };
@@ -81,15 +98,16 @@ const ShowDataResolver: React.FC<ResolverProps> = ({ pageData }: ResolverProps) 
 
 	return (
 		<Container>
-			<nav>{wordSetMenuData.name}</nav>
 			{!wordSetData ? (
 				'Ładowanie…'
 			) : wordSetData.session.words.length ? (
-				<Show wordSetMenuData={wordSetMenuData} />
+				<Show pageData={pageData} />
 			) : (
 				<div>
-					<Reset url={wordSetMenuData.url} />
-					<p>Koniec</p>
+					<Reset full={true} url={wordSetMenuData.url} />
+					<TranslationContainer>
+						<p>Zestaw słówek ukończony</p>
+					</TranslationContainer>
 				</div>
 			)}
 		</Container>

@@ -9,49 +9,46 @@ import Category from './index';
 import { serializeToURL } from '@root/app/helpers';
 
 const category: CategoryType = {
-    name: 'Super Category',
-    items: [],
+	name: 'Super Category',
+	items: [],
 };
 
 const items: WordSet[] = [
-    {
-        name: 'First',
-        url: '/first',
-    },
-    {
-        name: 'Second',
-        url: '/second',
-    },
+	{
+		name: 'First',
+		url: '/first',
+	},
+	{
+		name: 'Second',
+		url: '/second',
+	},
 ];
 
 afterEach(() => cleanup());
 
 it('renders category without items', () => {
-    renderWithRouter(<Category category={category} />);
+	renderWithRouter(<Category category={category} />);
 
-    const mainElement = screen.getByRole('listitem');
+	const mainElement = screen.getByRole('listitem');
 
-    expect(mainElement).toHaveTextContent(category.name);
+	expect(mainElement).toHaveTextContent(category.name);
 });
 
 it('renders correct number of items', () => {
-    renderWithRouter(<Category category={{ ...category, items }} />);
+	renderWithRouter(<Category category={{ ...category, items }} />);
 
-    const itemsList = screen.getByRole('list');
-    const listElements = within(itemsList).getAllByRole('listitem');
+	const itemsList = screen.getByRole('list');
+	const listElements = within(itemsList).getAllByRole('listitem');
 
-    expect(listElements.length).toEqual(2);
+	expect(listElements.length).toEqual(2);
 });
 
 it('renders correct link', () => {
-    const item = items[0];
+	const item = items[0];
 
-    renderWithRouter(<Category category={{ ...category, items: [item] }} />);
+	renderWithRouter(<Category category={{ ...category, items: [item] }} />);
 
-    const link = screen.getByRole('link');
-    expect(link).toHaveTextContent(item.name);
-    expect(link).toHaveAttribute(
-        'href',
-        serializeToURL(`/${category.name}/${item.name}`)
-    );
+	const link = screen.getByRole('link');
+	expect(link).toHaveTextContent(item.name);
+	expect(link).toHaveAttribute('href', serializeToURL(`/${category.name}/${item.name}`));
 });
