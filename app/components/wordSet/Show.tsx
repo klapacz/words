@@ -38,7 +38,7 @@ const Show: React.FC<ResolverProps> = ({ pageData }: ResolverProps) => {
 	const handleFormSubmit = (event: React.FormEvent) => {
 		event.preventDefault();
 
-		if (userTranslation.trim() === word.original.trim()) {
+		if (userTranslation.trim().toLowerCase() === word.original.trim().toLowerCase()) {
 			dispatch(setCurrentWordDone(url));
 		} else {
 			dispatch(setCurrentWordFailed(url));
