@@ -64,6 +64,8 @@ export function generateMenu(cb) {
 	}
 
 	fs.writeFileSync(join(menuDistDir, menuFilename), JSON.stringify(formattedData));
+
+	cb();
 }
 
 export default gulp.series(generateJsonAPI, generateMenu);
