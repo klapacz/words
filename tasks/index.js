@@ -12,7 +12,7 @@ export default gulp.series(
 	gulp.parallel(
 		server,
 		webpack,
-		() => gulp.watch('app/index.html', minifyHtml),
+		() => gulp.watch('app/*.html', minifyHtml),
 		() => gulp.watch('data/**/*.yaml', generateData)
 	)
 );
@@ -20,3 +20,4 @@ export default gulp.series(
 export const build = gulp.parallel(generateData, webpack, minifyHtml);
 
 export { generateMenu } from './data.js';
+export { server };
