@@ -1,0 +1,284 @@
+﻿name: Bank słów
+words:
+  date of birth: data urodzenia
+  citizenship: obywatelstwo
+  gender/sex: płeć
+  given name/first name: imię
+  family name: nazwisko
+  male/female: (płeć) męska żeńska
+  marital statu: stan cywilny
+  middle name: drugie imię
+  occupation: zawód
+  racial/ethnic group: grupa etniczna
+  spouse: współmałżonek
+
+  muscular: muskularny
+  obese: otyły
+  overweight: z nadwagą
+  plump: pulchny
+  skinny: chudy
+  slender: szczupły
+  stocky: krępy
+
+  curly: kręcone (włosy)
+  fringe: grzywka
+  fizzy: kędzierzawe
+  highlights: pasemka
+  plait: warkocz
+  ponytail: kucyk
+  tied in a bun: zebrane w kok
+
+  dimple: dołek (np. w policzku)
+  freckles: piegi
+  mole/beauty spot: pieprzyk
+  piercing: kolczyk
+  tattoo: tatuaż
+  wrinkles: zmarszczki
+
+  cape: peleryna
+  cape cardigan: luźny, rozpinany sweter
+  dressing gown: szlafrok
+  hoodie: bluza z kapturem
+  jersey: sweter lub koszulka sportowa
+  sleeve: rękaw
+  sweatshirt: bluza
+
+  bracelet: bransoletka
+  high heels: buty na wysokim obcasie
+  motorcycle boots: buty motocyklowe
+  necklace: naszyjnik
+  scarf: szalik, apaszka
+  slippers: kapcie
+  tie: krawat
+
+  fold: złożyć
+  shrink: skurczyć się
+  stretch: rozciągnąć się
+  untie the shoes: rozwiązać buty
+
+  baggy: workowaty
+  casual: nieformalny
+  creased: wygnieciony
+  faded: wypłowiały
+  feminine: kobiecy
+  floaty: zwiewny
+  floral: w kwiaty
+  flowy: spływający swobodnie
+  loose-fitting: luźny
+  ripped: podarty, z dziurami
+  scuffy: niechlujny
+  shabby: zaniedbany
+  sleeveless: bez rękawów
+  smart: elegancki
+  stretchy: rozciągliwy, elastyczny
+  striped: w paski
+  stylish: stylowy
+  tight-fitting: ciasny
+  trendy: modny
+  unique: unikalny
+  vintage: vintage, staromodny (jako zaleta)
+
+  blend into the crowd: wmieszać się w tłum
+  conform to a style: dopasować się do stylu
+  express sb’s individuality: być wyrazem czyjejś indywidualności
+  switch allegiance: zmienić przynależność
+
+  glance: rzucić okiem
+  glare: wpatrywac się ze złością
+  glimpse: spojrzeć przelotnie
+  inspect/scrutinise: zlustrować
+  peek: zerkać
+  peer: przyglądać się
+  stare: gapić się, wpatrywać się
+  watch: obserwować
+
+  hiss: syczeć
+  moan: jęczeć, narzekać
+  mumble/mutter: mamrotać
+  shout: krzyczeć
+  stutter: jąkać się
+  whisper: szeptać
+  yell: wrzeszczeć
+
+  bang your fist: uderzyć pięścią
+  cross your legs: skrzyżować nogi
+  fold your arms: skrzyżować ramiona
+  frown: zmarszczyć brwi
+  gesture: gest
+  hands on hips: ręce na biodrach
+  have your elbows on the table: opierać się łokciami o stół
+  hide your face in your hands: ukryć twarz w dłoniach
+  hug: objąć
+  lean back: odchylać się, opierać się, rozpierać się (na krześle)
+  posture: postawa
+  purse your lips: zacisnąć usta
+  rise your eyebrows: unieść brwi (ze zdumienia)
+  shake your head: potrząsnąć głową
+  shrug your shoulders: wzruszyć ramionami
+  stand with your feet apart: stać na szeroko rozstawionych nogach
+  tap your fingers (on the table): będnić palcami (w stół)
+  tremble: drżeć, trząść się
+  turn to sb: odwrócić się do kogoś
+  wink: mrugnąć
+
+  absent-minded: roztargniony
+  argumentative: kłótliwy
+  arrogant: arogancki
+  bossy: dominujący
+  bright: bystry, rozgarnięty
+  broad-minded: o szerokich horyzontach
+  busybody: osoba wścibska
+  caring: troskliwy
+  conceited: zarozumiały
+  conscientious: sumienny
+  cynical: cyniczny
+  (dis)honest: (nie)uczciwy
+  dis(loyal): (nie)lojalny
+  (dis)organized): (nie)zorganizowany
+  dull: nudny
+  entertaining: zabawny, wesoły
+  flexible: elastyczny
+  generous: hojny
+  gullible: łatwowierny
+  humble: skromny
+  immature: niedojrzały
+  immodest: nieskromny
+  impatient: niecierpliwy
+  imperfect: niedoskonały
+  impolite: nieuprzejmy
+  indiscreet: niedyskretny
+  inefficient: niesprawny, niewydajny, nieskuteczny
+  insensitive: niewrażliwy
+  insincere: nieserdeczny
+  intolerant: nietolerancyjny
+  irrational: nieracjonalny
+  irresponsible: nieodpowiedzialny
+  mean: skąpy, złośliwy
+  messy: nieporządny
+  narrow-minded: o wąskich horyzontach
+  nosy: wścibski
+  overambitious: zbyt ambitny
+  partial/impartial: stronniczy/bezstronny
+  perfectionist: perfekcjonista
+  procrastinator: osoba, która wszystko odkłada na później
+  rebellious: buntowniczy
+  reserved: powściągliwy
+  romantic: romantyczny
+  rude: nieuprzejmy
+  self-centered: egocentryczny
+  self-confident/self-assured: pewny siebie
+  self-conscious: niesmiały, skrępowany
+  sensible/resonable: rozsadny
+  shy: niesmiały
+  strict: surowy
+  stubborn: uparty
+  stupid: głupi
+  suspicious: podejrzliwy
+  sympathetic: współczujący
+  talkative: gadatliwy
+  trustworthy: godny zaufania
+  (un)imaginative: (nie)obdarzony wyobraźnią
+  (un)intelligent: (nie)inteligentny
+  (un)punctual: (nie)punktualny
+  unreasonable: nierozsądny
+  (un)reliable: (nie)rzetelny, (nie)sumienny
+  unscrupulous: pozbawiony skrupułów
+  vain: próżny
+
+  affection: uczucie, sympatia
+  angry: zły
+  annoy: srażnić, irytować
+  anxiety: niepokój
+  anxious: niespokojny
+  apprehensive: pełen obaw
+  ashamed: zawstydzony
+  astonished: zdziwiony
+  bewildered: skonsternowany, oszołomiony
+  confused: zdezorientowany
+  depressed: przygnębiony, smutny
+  devastated: zdruzgotany
+  elated: uszczęśliwiony
+  embarrassed: zażenowany, zawstydzony
+  excited: podekscytowany
+  frightened: przestraszony
+  furious: wściekły
+  gloomy: poury
+  heartbroken: zrozpaczony, załamany
+  in a bad temper: zirytowany
+  in the mood (for sth): w nastroju (na coś)
+  indifferent (to): obojętny (na)
+  long for sb/sth: tęsknić za kimś/czymś
+  lose your temper: stracić panowanie and sobą
+  miserable: nieszczęśliwy
+  moved: wzruszony
+  nervous: zdenerwowany
+  overwhelmed: przytłoczony (czymś)
+  respect: sznować
+  stressed out: zestresowany
+  suprised: zaskoczony
+  terrified/petrified: przerażony
+  thrilled: bardzo podekscytowany
+  tired: zmęczony
+  unhappy: nieszczęśliwy
+
+  be down in the dumps: mieć handrę, być bardzo smutnym
+  be over the moon: nie posiadać się ze szczęścia
+  get butterflies in yur stomach: mieć tremę
+  wake up in a cold sweat: obudzić się zalanym zimnym potem
+
+  adjust to: dostosować się do
+  admire: podziwiać
+  approve: aprobować
+  attitude: postawa, nastawienie
+  be passionate about sth: pasionować się czymś
+  belief: pogląd, przekonanie
+  content with: zadowolony z
+  convinced of: przekonany o
+  disapprove of: nie aprobować (czegoś)
+  dismiss (an idea): odrzucić (pomysł)
+  dismissive: lekceważący
+  focused on: skupiony, skoncentrowany na
+  have a go at sth: spróbować coś zrobić
+  indifferent to: obojętny na
+  insist on: nalegać na
+  regard ath as: uważać coś za
+  take an interest in sth: zainteresować się czymś
+  take pride in sth: szczycić się czymś
+
+  assume: zakładać
+  assumption: założenie, przypuszczenie
+  change your mind: zmienić zdanie
+  come to sb’s mind: przyjść komuś na myśl
+  compliment sb on sth: gratulować komuś czegoś
+  confront sth: stawiać czemuś czoło
+  deal with sth: radzić sobie z czymś
+  distract: rozpraszać
+  gain sb’s confidence: zyskać czyjeś zaufanie
+  get your head around sth: zrozumieć i zaakceptować coś
+  go to one’s head: uderzyć do głowy
+  have a good head for sth: mieć głowę do czegoś
+  have sth on your mind: stale myśleć o czymś
+  imagine: wyobrażać
+  lose your head: stracić głowę
+  lose your mind: stracić zmysły, oszaleć
+  make your mind: zdecydować się
+  multitask: zajmować się kilkoma rzeczami naraz, mieć podzielną uwagę
+  off the top of my head: bez zastanowienia
+  perceive: postrzegać, dostrzegać
+  realise: uświadomić sobie
+  recall/recollect: przypomnieć sobie
+  regard sth as: uważać coś za
+  sense: zmysł
+
+  abortion: aborcja
+  animal testing: testowanie na zwierzętach
+  cloning: klonowanie
+  death penalty/capital punishment: kara śmierci
+  ethical dilemma: dylemat etyczny
+  euthanasia: eutanazja
+  genetic engineering: inżynieria genetyczna
+  GMO (genetically modified organism): organizm modyfikowany genetycznie
+  IVF (in vitro fertilisation): zapłodnienie in vitro
+  marijuana legalisation: legalizacja marihuany
+  organ donation: dawstwo organów
+  same-sex marriage: małżeństwo homoseksualne
