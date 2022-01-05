@@ -79,6 +79,7 @@ const Show: React.FC<ResolverProps> = ({ pageData }: ResolverProps) => {
 						value={userTranslation}
 						placeholder="Poprawne tłumaczenie"
 						autoFocus
+						autoComplete="off"
 						onChange={({ target }) => setUserTranslation(target.value)}
 					/>
 				</form>
