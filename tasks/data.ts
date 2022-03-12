@@ -35,11 +35,6 @@ async function generateJsonAPI(): Promise<void> {
 	}
 }
 
-type WordSetData = {
-	name: string;
-	url: string;
-};
-
 async function generateMenu(): Promise<void> {
 	const indexPath = resolve(process.env.PWD, 'data/index.yaml');
 	const data = yaml.load(await fs.readFile(indexPath, { encoding: 'utf-8' }));
@@ -49,7 +44,7 @@ async function generateMenu(): Promise<void> {
 	for (const [dir, categoryName] of Object.entries(data)) {
 		const categoryData = {
 			name: categoryName,
-			items: [] as WordSetData[],
+			items: [],
 		};
 
 		const categoryPath = resolve(process.env.PWD, 'data', dir);
