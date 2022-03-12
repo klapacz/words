@@ -5,6 +5,12 @@ specifiers:
   '@reduxjs/toolkit': ^1.8.0
   '@testing-library/jest-dom': ^5.16.2
   '@testing-library/react': ^11.2.7
+  '@types/eslint': ^8.4.1
+  '@types/js-yaml': ^4.0.5
+  '@types/react': ^17.0.40
+  '@types/react-dom': ^17.0.13
+  '@types/react-router-dom': ^5.3.3
+  '@types/url-join': ^4.0.1
   '@typescript-eslint/eslint-plugin': ^4.33.0
   '@typescript-eslint/parser': ^4.33.0
   '@vitejs/plugin-react-refresh': ^1.3.6
@@ -45,6 +51,12 @@ devDependencies:
   '@kitql/vite-plugin-watch-and-run': 0.1.6
   '@testing-library/jest-dom': 5.16.2
   '@testing-library/react': 11.2.7_react-dom@17.0.2+react@17.0.2
+  '@types/eslint': 8.4.1
+  '@types/js-yaml': 4.0.5
+  '@types/react': 17.0.40
+  '@types/react-dom': 17.0.13
+  '@types/react-router-dom': 5.3.3
+  '@types/url-join': 4.0.1
   '@typescript-eslint/eslint-plugin': 4.33.0_65e88d2733f36d3624b406e590cf0b3b
   '@typescript-eslint/parser': 4.33.0_eslint@7.32.0+typescript@4.6.2
   '@vitejs/plugin-react-refresh': 1.3.6
@@ -481,6 +493,21 @@ packages:
     resolution: {integrity: sha512-HnYpAE1Y6kRyKM/XkEuiRQhTHvkzMBurTHnpFLYLBGPIylZNPs9jJcuOOYWxPLJCSEtmZT0Y8rHDokKN7rRTig==}
     dev: true
 
+  /@types/eslint/8.4.1:
+    resolution: {integrity: sha512-GE44+DNEyxxh2Kc6ro/VkIj+9ma0pO0bwv9+uHSyBrikYOHr8zYcdPvnBOp1aw8s+CjRvuSx7CyWqRrNFQ59mA==}
+    dependencies:
+      '@types/estree': 0.0.51
+      '@types/json-schema': 7.0.9
+    dev: true
+
+  /@types/estree/0.0.51:
+    resolution: {integrity: sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==}
+    dev: true
+
+  /@types/history/4.7.11:
+    resolution: {integrity: sha512-qjDJRrmvBMiTx+jyLxvLfJU7UznFuokDv4f3WRuriHKERccVpFU+8XMQUAbDzoiJCsmexxRExQeMwwCdamSKDA==}
+    dev: true
+
   /@types/hoist-non-react-statics/3.3.1:
     resolution: {integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==}
     dependencies:
@@ -511,6 +538,10 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
+  /@types/js-yaml/4.0.5:
+    resolution: {integrity: sha512-FhpRzf927MNQdRZP0J5DLIdTXhjLYzeUTmLAu69mnVksLH9CJY3IuSeEgbKUki7GQZm0WqDkGzyxju2EZGD2wA==}
+    dev: true
+
   /@types/json-schema/7.0.9:
     resolution: {integrity: sha512-qcUXuemtEu+E5wZSJHNxUXeCZhAfXKQ41D+duX+VYPde7xyEVZci+/oXKJL13tnRs9lR2pr4fod59GT6/X1/yQ==}
     dev: true
@@ -525,7 +556,12 @@ packages:
 
   /@types/prop-types/15.7.4:
     resolution: {integrity: sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==}
-    dev: false
+
+  /@types/react-dom/17.0.13:
+    resolution: {integrity: sha512-wEP+B8hzvy6ORDv1QBhcQia4j6ea4SFIBttHYpXKPFZRviBvknq0FRh3VrIxeXUmsPkwuXVZrVGG7KUVONmXCQ==}
+    dependencies:
+      '@types/react': 17.0.40
+    dev: true
 
   /@types/react-redux/7.1.23:
     resolution: {integrity: sha512-D02o3FPfqQlfu2WeEYwh3x2otYd2Dk1o8wAfsA0B1C2AJEFxE663Ozu7JzuWbznGgW248NaOF6wsqCGNq9d3qw==}
@@ -536,22 +572,39 @@ packages:
       redux: 4.1.2
     dev: false
 
+  /@types/react-router-dom/5.3.3:
+    resolution: {integrity: sha512-kpqnYK4wcdm5UaWI3fLcELopqLrHgLqNsdpHauzlQktfkHL3npOSwtj1Uz9oKBAzs7lFtVkV8j83voAz2D8fhw==}
+    dependencies:
+      '@types/history': 4.7.11
+      '@types/react': 17.0.40
+      '@types/react-router': 5.1.18
+    dev: true
+
+  /@types/react-router/5.1.18:
+    resolution: {integrity: sha512-YYknwy0D0iOwKQgz9v8nOzt2J6l4gouBmDnWqUUznltOTaon+r8US8ky8HvN0tXvc38U9m6z/t2RsVsnd1zM0g==}
+    dependencies:
+      '@types/history': 4.7.11
+      '@types/react': 17.0.40
+    dev: true
+
   /@types/react/17.0.40:
     resolution: {integrity: sha512-UrXhD/JyLH+W70nNSufXqMZNuUD2cXHu6UjCllC6pmOQgBX4SGXOH8fjRka0O0Ee0HrFxapDD8Bwn81Kmiz6jQ==}
     dependencies:
       '@types/prop-types': 15.7.4
       '@types/scheduler': 0.16.2
       csstype: 3.0.11
-    dev: false
 
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
-    dev: false
 
   /@types/testing-library__jest-dom/5.14.3:
     resolution: {integrity: sha512-oKZe+Mf4ioWlMuzVBaXQ9WDnEm1+umLx0InILg+yvZVBBDmzV5KfZyLrCvadtWcx8+916jLmHafcmqqffl+iIw==}
     dependencies:
       '@types/jest': 27.4.1
+    dev: true
+
+  /@types/url-join/4.0.1:
+    resolution: {integrity: sha512-wDXw9LEEUHyV+7UWy7U315nrJGJ7p1BzaCxDpEoLr789Dk1WDVMMlf3iBfbG2F8NdWnYyFbtTxUn2ZNbm1Q4LQ==}
     dev: true
 
   /@types/yargs-parser/21.0.0:
@@ -973,7 +1026,6 @@ packages:
 
   /csstype/3.0.11:
     resolution: {integrity: sha512-sa6P2wJ+CAbgyy4KFssIb/JNMLxFvKF1pCYCSXS8ZMuqZnMsrxqI2E5sPyoTpxoPU/gVZMzr2zjOfg8GIZOMsw==}
-    dev: false
 
   /debug/4.3.3:
     resolution: {integrity: sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==}
