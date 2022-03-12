@@ -1,17 +1,23 @@
 import yaml from 'js-yaml';
 import fs from 'fs/promises';
 import { resolve, join } from 'path';
-import { validate } from 'jsonschema';
-import menuSchema from '../data/menu.schema.json';
-import { exit } from 'process';
 
 import { constants } from 'fs';
 
 import { walk } from 'node-os-walk';
+import Ajv from 'ajv';
+import { indexSchema, MenuSchema, menuSchema, wordSetSchema } from './schemas';
+
+const pwd = process.env.PWD as string;
+
+const ajv = new Ajv({ allowMatchingProperties: true });
+const validateMenu = ajv.compile(menuSchema);
+const validateWordSet = ajv.compile(wordSetSchema);
+const validateIndex = ajv.compile(indexSchema);
 
 async function generateJsonAPI(): Promise<void> {
-	const apiDir = resolve(process.env.PWD, 'dist/api');
-	const dataDir = resolve(process.env.PWD, 'data');
+	const apiDir = resolve(pwd, 'dist/api');
+	const dataDir = resolve(pwd, 'data');
 
 	for await (const [root, dirs, files] of walk(dataDir)) {
 		const getDistLocation = (name: string) => {
@@ -36,18 +42,23 @@ async function generateJsonAPI(): Promise<void> {
 }
 
 async function generateMenu(): Promise<void> {
-	const indexPath = resolve(process.env.PWD, 'data/index.yaml');
+	const indexPath = resolve(pwd, 'data/index.yaml');
 	const data = yaml.load(await fs.readFile(indexPath, { encoding: 'utf-8' }));
 
-	const formattedData = [];
+	if (!validateIndex(data)) {
+		// TODO: error
+		return;
+	}
+
+	const generatedMenu = [];
 
 	for (const [dir, categoryName] of Object.entries(data)) {
-		const categoryData = {
+		const categoryData: MenuSchema[0] = {
 			name: categoryName,
 			items: [],
 		};
 
-		const categoryPath = resolve(process.env.PWD, 'data', dir);
+		const categoryPath = resolve(pwd, 'data', dir);
 		const categoryFiles = await fs.readdir(categoryPath);
 
 		for (const wordSetFilename of categoryFiles) {
@@ -58,6 +69,11 @@ async function generateMenu(): Promise<void> {
 
 			const apiEndpointURL = join('/api', dir, wordSetFilename.replace(/\.yaml$/, '.json'));
 
+			if (!validateWordSet(wordSetFileContent)) {
+				// TODO: error
+				return;
+			}
+
 			const wordSetData = {
 				name: wordSetFileContent.name,
 				url: apiEndpointURL,
@@ -66,19 +82,10 @@ async function generateMenu(): Promise<void> {
 			categoryData.items.push(wordSetData);
 		}
 
-		formattedData.push(categoryData);
+		generatedMenu.push(categoryData);
 	}
 
-	const validationResponse = validate(formattedData, menuSchema, {
-		required: true,
-	});
-
-	if (!validationResponse.valid) {
-		console.error('generated menu is invalid');
-		exit(1);
-	}
-
-	const menuDistDir = resolve(process.env.PWD, 'generated');
+	const menuDistDir = resolve(pwd, 'generated');
 	const menuFilename = 'menu.json';
 
 	try {
@@ -87,7 +94,7 @@ async function generateMenu(): Promise<void> {
 		await fs.mkdir(menuDistDir);
 	}
 
-	await fs.writeFile(join(menuDistDir, menuFilename), JSON.stringify(formattedData));
+	await fs.writeFile(join(menuDistDir, menuFilename), JSON.stringify(generatedMenu));
 }
 
 generateMenu();
