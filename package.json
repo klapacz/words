@@ -7,6 +7,7 @@
         "@testing-library/jest-dom": "^5.11.5",
         "@testing-library/react": "^11.1.1",
         "@types/jest": "^26.0.15",
+        "@types/js-yaml": "^4.0.5",
         "@types/react": "^16.9.56",
         "@types/react-dom": "^16.9.9",
         "@types/react-redux": "^7.1.11",
@@ -51,5 +52,7 @@
         "test": "jest",
         "test:watch": "jest --watch"
     },
-    "dependencies": {}
+    "dependencies": {
+        "node-os-walk": "^1.0.0"
+    }
 }
