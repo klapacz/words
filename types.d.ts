@@ -1,5 +1,5 @@
-import { MenuState } from '@/store/menu/types';
-import { theme } from '@/styled/theme';
+import { MenuState } from '@root/src/store/menu/types';
+import { theme } from '@root/src/styled/theme';
 
 declare module 'menu.json' {
 	const value: MenuState['menu'];

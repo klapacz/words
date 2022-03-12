@@ -2,7 +2,7 @@ import { createSelector, OutputSelector } from 'reselect';
 import { State } from '..';
 import { Category, MenuState, WordSet } from './types';
 
-import { serializeToURL } from '@root/app/helpers';
+import { serializeToURL } from '@root/src/helpers';
 
 export const selectMenu = (state: Partial<State>): MenuState['menu'] => state.menu.menu;
 

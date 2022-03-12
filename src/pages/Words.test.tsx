@@ -3,9 +3,9 @@ import { cleanup, screen } from '@testing-library/react';
 import { useSelector } from 'react-redux';
 
 import { renderWithRouter } from '@root/tests/helpers';
-import { PageData } from '@/store/menu';
+import { PageData } from '@root/src/store/menu';
 import Words from './Words';
-import { ResolverProps } from '@/components/wordSet/Show';
+import { ResolverProps } from '@root/src/components/wordSet/Show';
 
 jest.mock('@/components/wordSet/Show', () =>
 	jest

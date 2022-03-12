@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { selectBy } from '../store/menu';
-import Show from '@/components/wordSet/Show';
-import { PageData } from '@/store/menu/index';
+import Show from '@root/src/components/wordSet/Show';
+import { PageData } from '@root/src/store/menu/index';
 
 interface urlParams {
 	category: string;

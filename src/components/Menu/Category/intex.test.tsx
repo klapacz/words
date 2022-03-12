@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { cleanup, screen, within } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { Category as CategoryType, WordSet } from '@/store/menu/types';
+import { Category as CategoryType, WordSet } from '@root/src/store/menu/types';
 
 import { renderWithRouter } from '@root/tests/helpers';
 
 import Category from './index';
-import { serializeToURL } from '@root/app/helpers';
+import { serializeToURL } from '@root/src/helpers';
 
 const category: CategoryType = {
 	name: 'Super Category',

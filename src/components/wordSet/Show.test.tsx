@@ -5,12 +5,12 @@ import { cleanup, screen, render, fireEvent } from '@testing-library/react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
-import menuReducer from '@/store/menu/index';
-import wordSetsReducer from '@/store/wordSets/index';
+import menuReducer from '@root/src/store/menu/index';
+import wordSetsReducer from '@root/src/store/wordSets/index';
 
 import Show from './Show';
-import { PageData } from '@/store/menu/index';
-import { fakeWordSet } from '@/store/wordSets/index.test';
+import { PageData } from '@root/src/store/menu/index';
+import { fakeWordSet } from '@root/src/store/wordSets/index.test';
 import { configureStore, Store } from '@reduxjs/toolkit';
 
 const server = setupServer(rest.get('/test', (req, res, ctx) => res(ctx.json(fakeWordSet))));

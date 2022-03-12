@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchWordSet } from '@root/app/store/wordSets';
-import { StyledReset } from '@root/app/styled/wordSet';
+import { fetchWordSet } from '@root/src/store/wordSets';
+import { StyledReset } from '@root/src/styled/wordSet';
 
 interface ResetProps {
 	url: string;

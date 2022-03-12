@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Category } from '@/store/menu/types';
+import { Category } from '@root/src/store/menu/types';
 import { Link } from 'react-router-dom';
-import { serializeToURL } from '@root/app/helpers';
-import { MenuItem, SubMenu, SubMenuItem } from '@/styled';
+import { serializeToURL } from '@root/src/helpers';
+import { MenuItem, SubMenu, SubMenuItem } from '@root/src/styled';
 
 interface Props {
 	category: Category;

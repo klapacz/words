@@ -8,11 +8,11 @@ import {
 	selectWordSet,
 	setCurrentWordDone,
 	setCurrentWordFailed,
-} from '@root/app/store/wordSets';
+} from '@root/src/store/wordSets';
 
-import { Container } from '@/styled';
+import { Container } from '@root/src/styled';
 
-import { PageData } from '@/store/menu/index';
+import { PageData } from '@root/src/store/menu/index';
 
 import Reset from './Reset';
 import {
@@ -21,7 +21,7 @@ import {
 	TranslationContainer,
 	TranslationFailed,
 	CorrectTranslation,
-} from '@root/app/styled/wordSet';
+} from '@root/src/styled/wordSet';
 
 export interface ResolverProps {
 	pageData: PageData;
