@@ -4,6 +4,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import watchAndRun from '@kitql/vite-plugin-watch-and-run';
 
 export default defineConfig({
+	base: process.env.BASE_URL || '/',
 	plugins: [
 		reactRefresh(),
 		tsconfigPaths(),
