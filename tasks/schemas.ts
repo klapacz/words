@@ -1,11 +1,11 @@
 import { JSONSchemaType } from 'ajv';
 
-export type Menu = {
+export type MenuSchema = {
 	name: string;
 	items: { name: string; url: string }[];
 }[];
 
-export const menuSchema: JSONSchemaType<Menu> = {
+export const menuSchema: JSONSchemaType<MenuSchema> = {
 	type: 'array',
 	items: {
 		type: 'object',
@@ -33,16 +33,16 @@ export const menuSchema: JSONSchemaType<Menu> = {
 			},
 		},
 	},
-} as const;
+};
 
-export type WordSet = {
+export type WordSetSchema = {
 	name: string;
 	words: {
 		[key: string]: string;
 	};
 };
 
-export const wordSetSchema: JSONSchemaType<WordSet> = {
+export const wordSetSchema: JSONSchemaType<WordSetSchema> = {
 	type: 'object',
 	additionalProperties: false,
 	required: ['name', 'words'],
@@ -59,6 +59,21 @@ export const wordSetSchema: JSONSchemaType<WordSet> = {
 					type: 'string',
 				},
 			},
+		},
+	},
+};
+
+export type IndexSchema = {
+	[key: string]: string;
+};
+
+export const indexSchema: JSONSchemaType<IndexSchema> = {
+	type: 'object',
+	additionalProperties: false,
+	required: [],
+	patternProperties: {
+		'^.*$': {
+			type: 'string',
 		},
 	},
 };
