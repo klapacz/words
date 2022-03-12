@@ -8,12 +8,13 @@ import Root from './Root';
 import { GlobalStyle } from './styled';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './styled/theme';
+import env from './env';
 
 ReactDOM.render(
 	<React.StrictMode>
 		<ThemeProvider theme={theme}>
 			<Provider store={store}>
-				<BrowserRouter basename={import.meta.env.BASE_URL}>
+				<BrowserRouter basename={env.BASE_URL}>
 					<Root />
 				</BrowserRouter>
 			</Provider>
