@@ -34,3 +34,31 @@ export const menuSchema: JSONSchemaType<Menu> = {
 		},
 	},
 } as const;
+
+export type WordSet = {
+	name: string;
+	words: {
+		[key: string]: string;
+	};
+};
+
+export const wordSetSchema: JSONSchemaType<WordSet> = {
+	type: 'object',
+	additionalProperties: false,
+	required: ['name', 'words'],
+	properties: {
+		name: {
+			type: 'string',
+		},
+		words: {
+			type: 'object',
+			additionalProperties: false,
+			required: [],
+			patternProperties: {
+				'^.*$': {
+					type: 'string',
+				},
+			},
+		},
+	},
+};
