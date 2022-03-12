@@ -10,18 +10,9 @@ import {
 	setCurrentWordFailed,
 } from '@root/src/store/wordSets';
 
-import { Container } from '@root/src/styled';
-
 import { PageData } from '@root/src/store/menu/index';
 
 import Reset from './Reset';
-import {
-	Crumbs,
-	ShowHeader,
-	TranslationContainer,
-	TranslationFailed,
-	CorrectTranslation,
-} from '@root/src/styled/wordSet';
 
 export interface ResolverProps {
 	pageData: PageData;
@@ -49,8 +40,8 @@ const Show: React.FC<ResolverProps> = ({ pageData }: ResolverProps) => {
 
 	return (
 		<div>
-			<ShowHeader>
-				<Crumbs>
+			<header>
+				<nav>
 					<ol>
 						<li>{category.name}</li>
 						<li>{wordSetMenuData.name}</li>
@@ -58,19 +49,18 @@ const Show: React.FC<ResolverProps> = ({ pageData }: ResolverProps) => {
 							{progress}/{max}
 						</li>
 					</ol>
-				</Crumbs>
+				</nav>
 				<Reset url={url} />
-			</ShowHeader>
+			</header>
 
-			<TranslationContainer>
+			<div>
 				<h1>{word.translation}</h1>
 
 				{word.failed && (
-					<TranslationFailed>
-						Błąd! Poprawne tłumaczenie to{' '}
-						<CorrectTranslation>{word.original}</CorrectTranslation> Wpisz je jeszcze{' '}
+					<div>
+						Błąd! Poprawne tłumaczenie to <span>{word.original}</span> Wpisz je jeszcze{' '}
 						<b>{word.failed}</b> razy.
-					</TranslationFailed>
+					</div>
 				)}
 
 				<form onSubmit={handleFormSubmit}>
@@ -83,7 +73,7 @@ const Show: React.FC<ResolverProps> = ({ pageData }: ResolverProps) => {
 						onChange={({ target }) => setUserTranslation(target.value)}
 					/>
 				</form>
-			</TranslationContainer>
+			</div>
 		</div>
 	);
 };
@@ -98,20 +88,20 @@ const ShowDataResolver: React.FC<ResolverProps> = ({ pageData }: ResolverProps) 
 	}, [dispatch, wordSetMenuData, wordSetData]);
 
 	return (
-		<Container>
+		<div>
 			{!wordSetData ? (
 				'Ładowanie…'
 			) : wordSetData.session.words.length ? (
 				<Show pageData={pageData} />
 			) : (
 				<div>
-					<Reset full={true} url={wordSetMenuData.url} />
-					<TranslationContainer>
+					<Reset url={wordSetMenuData.url} />
+					<div>
 						<p>Zestaw słówek ukończony</p>
-					</TranslationContainer>
+					</div>
 				</div>
 			)}
-		</Container>
+		</div>
 	);
 };
 

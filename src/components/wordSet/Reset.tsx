@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchWordSet } from '@root/src/store/wordSets';
-import { StyledReset } from '@root/src/styled/wordSet';
 
 interface ResetProps {
 	url: string;
@@ -11,11 +10,7 @@ interface ResetProps {
 const Reset: React.FC<ResetProps> = ({ url, full = false }: ResetProps) => {
 	const dispatch = useDispatch();
 
-	return (
-		<StyledReset full={full} onClick={() => dispatch(fetchWordSet(url))}>
-			Resetuj
-		</StyledReset>
-	);
+	return <button onClick={() => dispatch(fetchWordSet(url))}>Resetuj</button>;
 };
 
 export default Reset;
