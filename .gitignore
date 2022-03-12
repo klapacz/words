@@ -115,5 +115,8 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-generated
 .vscode
+
+# project specific
+generated
+public/api

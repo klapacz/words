@@ -16,7 +16,7 @@ const validateWordSet = ajv.compile(wordSetSchema);
 const validateIndex = ajv.compile(indexSchema);
 
 async function generateJsonAPI(): Promise<void> {
-	const apiDir = resolve(pwd, 'dist/api');
+	const apiDir = resolve(pwd, 'public/api');
 	const dataDir = resolve(pwd, 'data');
 
 	for await (const [root, dirs, files] of walk(dataDir)) {

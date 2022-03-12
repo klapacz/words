@@ -13,7 +13,7 @@ ReactDOM.render(
 	<React.StrictMode>
 		<ThemeProvider theme={theme}>
 			<Provider store={store}>
-				<BrowserRouter basename={process.env.BASE_URL || ''}>
+				<BrowserRouter basename={import.meta.env.BASE_URL}>
 					<Root />
 				</BrowserRouter>
 			</Provider>
