@@ -11,7 +11,7 @@ export default defineConfig({
 		watchAndRun([
 			{
 				watch: '**/*.yaml',
-				run: 'npm run build:api',
+				run: 'pnpm run build:api',
 				delay: 0,
 			},
 		]),
