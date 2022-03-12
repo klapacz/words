@@ -21,6 +21,7 @@
         "eslint-plugin-prettier": "^3.1.4",
         "eslint-plugin-react": "^7.21.5",
         "eslint-plugin-react-hooks": "^4.2.0",
+        "esr": "^0.10.0",
         "gulp": "^4.0.2",
         "gulp-htmlmin": "^5.0.1",
         "gulp-json-schema": "^1.0.0",
@@ -48,6 +49,7 @@
     "scripts": {
         "dev": "NODE_ENV=development gulp --require @babel/register --gulpfile tasks",
         "build": "NODE_ENV=production gulp build --require @babel/register --gulpfile tasks",
+        "build:api": "esr scripts/data.ts",
         "lint": "eslint app/* tests/* tasks/*",
         "test": "jest",
         "test:watch": "jest --watch"
