@@ -1,7 +1,6 @@
 {
   "devDependencies": {
     "@kitql/vite-plugin-watch-and-run": "^0.1.6",
-    "@types/eslint": "^8.4.1",
     "@types/js-yaml": "^4.0.5",
     "@types/node": "^17.0.21",
     "@types/react-dom": "^17.0.13",
