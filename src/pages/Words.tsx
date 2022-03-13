@@ -11,10 +11,8 @@ interface urlParams {
 }
 
 const Words: React.FC = () => {
-	const {
-		category: categorySerializedName,
-		wordSet: wordSetSerializedName,
-	}: urlParams = useParams();
+	const { category: categorySerializedName, wordSet: wordSetSerializedName }: urlParams =
+		useParams();
 
 	const pageData: PageData = useSelector(selectBy(categorySerializedName, wordSetSerializedName));
 

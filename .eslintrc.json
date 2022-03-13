@@ -6,15 +6,12 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended",
         "plugin:react-hooks/recommended",
-        "plugin:prettier/recommended",
-        "prettier/flowtype",
-        "prettier/react",
-        "prettier/standard"
+        "plugin:prettier/recommended"
     ],
     "plugins": ["react", "@typescript-eslint", "prettier"],
     "settings": {
         "react": {
-            "version": "detected"
+            "version": "detect"
         }
     },
     "env": {
@@ -27,7 +24,6 @@
         }
     },
     "rules": {
-        "indent": ["error", "tab"],
         "prettier/prettier": [
             "error",
             {  

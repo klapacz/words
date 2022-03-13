@@ -7,7 +7,7 @@ interface ResetProps {
 	full?: boolean;
 }
 
-const Reset: React.FC<ResetProps> = ({ url, full = false }: ResetProps) => {
+const Reset: React.FC<ResetProps> = ({ url }: ResetProps) => {
 	const dispatch = useDispatch();
 
 	return <button onClick={() => dispatch(fetchWordSet(url))}>Resetuj</button>;
