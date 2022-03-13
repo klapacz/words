@@ -30,7 +30,7 @@
     "dev": "npm run build:api && vite",
     "build": "npm run build:api && vite build",
     "build:api": "esr scripts/data.ts",
-    "lint": "eslint app/* tests/* tasks/*"
+    "lint": "eslint scripts/* src/*"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.0",
