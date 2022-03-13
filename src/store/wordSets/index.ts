@@ -3,7 +3,7 @@ import { WordSetsState } from './types';
 import { fetchWordSet, setCurrentWordDone, setCurrentWordFailed } from './actions';
 
 const initialState: WordSetsState = {
-	wordSets: JSON.parse(window.localStorage.getItem('wordSets')) || {},
+	wordSets: JSON.parse(window.localStorage.getItem('wordSets') || '{}'),
 };
 
 export const slice = createSlice({
@@ -31,7 +31,8 @@ export const slice = createSlice({
 					return;
 				}
 
-				session.words[session.current].failed = session.words[session.current].failed - 1;
+				const current = session.words[session.current];
+				if (current.failed) current.failed = current.failed - 1;
 			})
 
 			.addCase(setCurrentWordFailed, (state, action) => {

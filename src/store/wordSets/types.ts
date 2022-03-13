@@ -5,8 +5,8 @@ export interface Word {
 }
 
 export interface WordSet {
-	words?: Word[];
-	session?: {
+	words: Word[];
+	session: {
 		words: Word[];
 		current: number;
 	};
