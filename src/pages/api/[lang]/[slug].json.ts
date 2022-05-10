@@ -1,16 +1,19 @@
 import * as fs from "node:fs/promises";
+import * as yaml from 'js-yaml'
 
 const dataPageRegex = /.+data\/(.+)\/(.+).yaml/;
 
 export async function getStaticPaths() {
   const modules = await import.meta.glob("../../../../data/**/*.yaml");
-
-  const pages = Object.entries(modules)
-    .filter(([fileName]) => dataPageRegex.test(fileName))
-    .map(([fileName]) => {
-      const [, lang, slug] = fileName.match(dataPageRegex);
-      return { params: { lang, slug } };
-    });
+  const pages = []
+  
+  for (const [fileName] of Object.entries(modules)) {
+    const match = fileName.match(dataPageRegex)
+    if (!match) continue
+      
+    const [, lang, slug] = match
+    pages.push({ params: { lang, slug } })
+  }
 
   return pages;
 }
@@ -18,9 +21,10 @@ export async function getStaticPaths() {
 export async function get({ params }) {
   const { lang, slug } = params;
 
-  const file = await fs.readFile(`../../../../data/${lang}/${slug}.yaml`);
+  const file = await fs.readFile(`data/${lang}/${slug}.yaml`, { encoding: 'utf8' });
+  const content = yaml.load(file);
 
   return {
-    body: JSON.stringify(params),
+    body: JSON.stringify(content),
   };
 }
