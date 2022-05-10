@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import yaml from 'js-yaml'
 
 export async function getStaticPaths() {
-  const modules = await import.meta.glob("/data/**/*.yaml");
+  const modules = await import.meta.glob("/data/**/*.yaml", {as: 'raw'});
   const pages = []
   
   for (const [fileName] of Object.entries(modules)) {
