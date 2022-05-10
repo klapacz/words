@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import yaml from 'js-yaml'
+import { validateWordSet } from "@/schemas";
 
 export async function getContentPages() {
   const modules = await import.meta.glob("/data/**/*.yaml", {as: 'raw'});
@@ -29,6 +30,10 @@ export async function get({ params }) {
 
   const file = await fs.readFile(`data/${lang}/${slug}.yaml`, { encoding: 'utf8' });
   const content = yaml.load(file);
+
+  if (!validateWordSet(content)) {
+    throw new Error(validateWordSet.errors?.map(e => e.message).join('\n')); 
+  }
 
   return {
     body: JSON.stringify(content),

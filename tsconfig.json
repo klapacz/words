@@ -12,6 +12,7 @@
     // Add type definitions for our Vite runtime.
     "types": ["vite/client"],
     "allowSyntheticDefaultImports": true,
+    "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
