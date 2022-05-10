@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import WindiCSS from 'vite-plugin-windicss'
+import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
@@ -7,8 +7,8 @@ export default defineConfig({
   vite: {
     ssr: {
       // https://github.com/natemoo-re/astro-icon#setup
-      external: ["svgo"],
+      external: ["svgo"]
     },
-    plugins: [WindiCSS()],
   },
+  integrations: [tailwind()]
 });

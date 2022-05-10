@@ -11,18 +11,25 @@ const getAppLink = (apiUrl: string) => apiUrl.replace('api/', '').replace('.json
     title="Words"
     description="Words"
 >
-    <ul>
-        {Object.entries(menu).map(([lang, wordSets]) => (
-            <li>
-                {lang}
-                <ol>
-                    {Object.entries(wordSets).map(([name, apiUrl]) => (
-                        <li>
-                            <a href={getAppLink(apiUrl)}>{name}</a>
-                        </li>
-                    ))}
-                </ol>
-            </li>
-        ))}
-    </ul>
+    <div class="container max-w-4xl px-6 py-10 mx-auto">
+        <ul>
+            {Object.entries(menu).map(([lang, wordSets]) => (
+                <li class="border-2 border-gray-100 rounded-lg dark:border-gray-700 mb-2">
+                    <span class="flex items-center justify-between w-full p-8">
+                        <span class="font-semibold text-gray-700 dark:text-white">{lang}</span>
+                    </span>
+
+                    <hr class="border-gray-200 dark:border-gray-700">
+
+                    <ol class="p-8 text-sm text-gray-500 dark:text-gray-300">
+                        {Object.entries(wordSets).map(([name, apiUrl]) => (
+                            <li>
+                                <a href={getAppLink(apiUrl)}>{name}</a>
+                            </li>
+                        ))}
+                    </ol>
+                </li>
+            ))}
+        </ul>
+    </div>
 </Layout>
