@@ -16,7 +16,7 @@ export async function get() {
 
   for (const { lang, slug, content } of pages) {
     const { name } = yaml.load(content)
-    result[langs[lang]][name] = `/api/${lang}/${slug}.json`
+    result[langs[lang]][name] = `${import.meta.env.BASE_URL}/api/${lang}/${slug}.json`
   }
   
   return {
