@@ -1,10 +1,28 @@
 ---
 import Layout from '../components/Layout.astro';
+
+import { getIndex } from './api/index.json';
+
+const menu = await getIndex();
 ---
 
 <Layout
-    title="Homepage - Korneliusz Łapacz"
-    description="Kornel's homepage"
+    title="Words"
+    description="Words"
 >
-	Hello world
+    <ul>
+        {Object.entries(menu).map(([lang, wordSets]) => (
+            <li>
+                {lang}
+                <ol>
+                    {Object.entries(wordSets).map(([name, apiUrl]) => (
+                        <li>
+                            {name}
+                            <a href={apiUrl}>{apiUrl}</a>
+                        </li>
+                    ))}
+                </ol>
+            </li>
+        ))}
+    </ul>
 </Layout>
