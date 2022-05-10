@@ -1,0 +1,23 @@
+---
+import Layout from "@/components/Layout.astro";
+import { getContentPages } from "../api/[lang]/[slug].json";
+
+export async function getStaticPaths() {
+  const pages = await getContentPages();
+
+  return pages.map(({ lang, slug }) => ({
+    params: { lang, slug },
+  }));
+}
+
+export type Params = {
+    lang: string,
+    slug: string,
+}
+
+const {lang, slug} = Astro.params as Params
+---
+
+<Layout title={slug} description={`${lang} / ${slug}`}>
+    {lang} {slug}
+</Layout>

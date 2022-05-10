@@ -4,6 +4,7 @@ import Layout from '../components/Layout.astro';
 import { getIndex } from './api/index.json';
 
 const menu = await getIndex();
+const getAppLink = (apiUrl: string) => apiUrl.replace('api/', '').replace('.json', '');
 ---
 
 <Layout
@@ -17,8 +18,7 @@ const menu = await getIndex();
                 <ol>
                     {Object.entries(wordSets).map(([name, apiUrl]) => (
                         <li>
-                            {name}
-                            <a href={apiUrl}>{apiUrl}</a>
+                            <a href={getAppLink(apiUrl)}>{name}</a>
                         </li>
                     ))}
                 </ol>
