@@ -1,19 +1,27 @@
 import fs from "node:fs/promises";
 import yaml from 'js-yaml'
 
-export async function getStaticPaths() {
+export async function getContentPages() {
   const modules = await import.meta.glob("/data/**/*.yaml", {as: 'raw'});
-  const pages = []
+  const pages: { lang: string, slug: string, content: string }[] = []
   
-  for (const [fileName] of Object.entries(modules)) {
+  for (const [fileName, content] of Object.entries(modules)) {
     const match = fileName.match(/.+data\/(.+)\/(.+).yaml/)
     if (!match) continue
       
     const [, lang, slug] = match
-    pages.push({ params: { lang, slug } })
+    pages.push({ lang, slug, content: content as unknown as string })
   }
 
   return pages;
+}
+
+export async function getStaticPaths() {
+  const pages = await getContentPages();
+
+  return pages.map(({ lang, slug }) => ({
+    params: { lang, slug },
+  }));
 }
 
 export async function get({ params }) {
