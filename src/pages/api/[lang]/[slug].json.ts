@@ -1,14 +1,12 @@
-import * as fs from "node:fs/promises";
-import * as yaml from 'js-yaml'
-
-const dataPageRegex = /.+data\/(.+)\/(.+).yaml/;
+import fs from "node:fs/promises";
+import yaml from 'js-yaml'
 
 export async function getStaticPaths() {
-  const modules = await import.meta.glob("../../../../data/**/*.yaml");
+  const modules = await import.meta.glob("/data/**/*.yaml");
   const pages = []
   
   for (const [fileName] of Object.entries(modules)) {
-    const match = fileName.match(dataPageRegex)
+    const match = fileName.match(/.+data\/(.+)\/(.+).yaml/)
     if (!match) continue
       
     const [, lang, slug] = match
