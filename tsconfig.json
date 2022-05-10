@@ -1,21 +1,15 @@
 {
   "compilerOptions": {
-    "strict": true,
+    // Enable top-level await, and other modern ESM features.
     "target": "ESNext",
     "module": "ESNext",
+    // Enable node-style module resolution, for things like npm package imports.
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "jsx": "react",
+    // Enable JSON imports.
     "resolveJsonModule": true,
-    "strictNullChecks": true,
-    "types": ["vite/client"],
-    "skipLibCheck": true,
-
-    "baseUrl": ".",
-    "paths": {
-      "@root/*": ["*"],
-      "@/*": ["src/*"]
-    }
+    // Enable stricter transpilation for better output.
+    "isolatedModules": true,
+    // Add type definitions for our Vite runtime.
+    "types": ["vite/client"]
   }
 }
