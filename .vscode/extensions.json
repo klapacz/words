@@ -1,7 +1,7 @@
 {
   "recommendations": [
     "astro-build.astro-vscode",
-    "voorjaar.windicss-intellisense"
+    "bradlc.vscode-tailwindcss"
   ],
   "unwantedRecommendations": []
 }
