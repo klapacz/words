@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import yaml from 'js-yaml'
 import { getContentPages } from "./[lang]/[slug].json";
 
-export async function get() {
+export async function getIndex() {
   const result = {}
 
   const file = await fs.readFile(`data/index.yaml`, { encoding: 'utf8' });
@@ -18,6 +18,12 @@ export async function get() {
     const { name } = yaml.load(content)
     result[langs[lang]][name] = `${import.meta.env.PUBLIC_BASE_URL || '/'}api/${lang}/${slug}.json`
   }
+
+  return result 
+}
+
+export async function get() {
+  const result = await getIndex()
 
   return {
     body: JSON.stringify(result),
