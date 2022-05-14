@@ -5,46 +5,60 @@
 	<meta name="description" content="Words">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 	<title>Words</title>
-<link rel="stylesheet" href="/words/assets/asset.57ff73a7.css"></link>
+<link rel="stylesheet" href="/words/assets/asset.bee5c10f.css"></link>
 </head>
-<body class="bg-white dark:bg-gray-900">
+<body class="bg-gray-50 dark:bg-gray-900 ">
 	<div class="container max-w-4xl px-6 py-10 mx-auto">
+		<header class="p-8 text-center">
+        <h1 class="text-4xl font-bold mb-2 dark:text-white">Words</h1>
+        <p class="text-gray-500">App for learning vocabulary</p>
+    </header><nav>
         <ul>
-            <li class="border-2 border-gray-100 rounded-lg dark:border-gray-700 mb-2">
-                    <span class="flex items-center justify-between w-full p-8">
-                        <span class="font-semibold text-gray-700 dark:text-white">German</span>
+            <li class="border-2 border-gray-100 dark:border-gray-700 rounded-lg mb-2 bg-white dark:bg-gray-800 dark:text-white">
+                    <span class="flex items-center justify-between w-full p-5 border-b-2 border-gray-100 dark:border-gray-700">
+                        <span class="text-gray-700 dark:text-white text-xl">German</span>
                     </span>
 
-                    <hr class="border-gray-200 dark:border-gray-700">
-
-                    <ol class="p-8 text-sm text-gray-500 dark:text-gray-300">
+                    <ol class="ml-5 p-5 list-disc">
                         <li>
-                                <a href="/words/de/1">Zuerst</a>
+                                <a href="/words/de/1" class="px-1 py-2 block hover:underline text-blue-600">Zuerst</a>
                             </li><li>
-                                <a href="/words/de/8-beruf-und-arbeit">8 Beruf und Arbeit</a>
+                                <a href="/words/de/8-beruf-und-arbeit" class="px-1 py-2 block hover:underline text-blue-600">8 Beruf und Arbeit</a>
                             </li><li>
-                                <a href="/words/de/t">Test</a>
+                                <a href="/words/de/t" class="px-1 py-2 block hover:underline text-blue-600">Test</a>
                             </li>
                     </ol>
-                </li><li class="border-2 border-gray-100 rounded-lg dark:border-gray-700 mb-2">
-                    <span class="flex items-center justify-between w-full p-8">
-                        <span class="font-semibold text-gray-700 dark:text-white">English</span>
+                </li><li class="border-2 border-gray-100 dark:border-gray-700 rounded-lg mb-2 bg-white dark:bg-gray-800 dark:text-white">
+                    <span class="flex items-center justify-between w-full p-5 border-b-2 border-gray-100 dark:border-gray-700">
+                        <span class="text-gray-700 dark:text-white text-xl">English</span>
                     </span>
 
-                    <hr class="border-gray-200 dark:border-gray-700">
-
-                    <ol class="p-8 text-sm text-gray-500 dark:text-gray-300">
+                    <ol class="ml-5 p-5 list-disc">
                         <li>
-                                <a href="/words/en/1">Unit 1</a>
+                                <a href="/words/en/1" class="px-1 py-2 block hover:underline text-blue-600">Unit 1</a>
                             </li><li>
-                                <a href="/words/en/2">Unit 2</a>
+                                <a href="/words/en/2" class="px-1 py-2 block hover:underline text-blue-600">Unit 2</a>
                             </li><li>
-                                <a href="/words/en/6">Unit 6</a>
+                                <a href="/words/en/6" class="px-1 py-2 block hover:underline text-blue-600">Unit 6</a>
                             </li><li>
-                                <a href="/words/en/7">Bank słów</a>
+                                <a href="/words/en/7" class="px-1 py-2 block hover:underline text-blue-600">Bank słów</a>
                             </li>
                     </ol>
                 </li>
         </ul>
-    </div>
+    </nav><footer class="p-4 text-center text-gray-500">
+        <p>Made with ❤️ by <a href="https://klapacz.dev" class="underline hover:text-blue-600">Korneliusz Łapacz</a></p>
+        <nav class="flex justify-center">
+            <a href="//github.com/klapacz/words" class="flex p-3 hover:text-blue-600">
+                <svg viewBox="0 0 24 24" class="w-5 h-5 mr-2" astro-icon="tabler:brand-github"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+ Source
+            </a>
+            <a href="/words/api.json" class="flex p-3 hover:text-blue-600">
+                <svg viewBox="0 0 24 24" class="w-5 h-5 mr-2" astro-icon="tabler:code"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icon-tabler"><path d="m7 8-4 4 4 4M17 8l4 4-4 4M14 4l-4 16"/></g></svg>
+
+                API
+            </a>
+        </nav>
+    </footer>
+	</div>
 </body></html>
